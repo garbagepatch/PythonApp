@@ -25,14 +25,16 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.lotnumber = "A20111111"
         self.date = date.today()
         self.expdate = date.today()
+        self.listInfo = []
 
     def OpenLabels(self):
-        self.batchTitle = self.batchTitleLineEdit.text()
-        self.email = self.emailLineEdit.text()
-        self.lotnumber = self.lotNumberLineEdit.text()
-        
-        label = Label(self.batchTitle,self.email, self.lotnumber,  self.deliveryZoneComboBox.currentText, self.expirationDateDateTimeEdit, self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLabel.text(), self.conductivityTemperatureLineEdit.text() )
-        label.showNormal()
+        try: 
+            self.listInfo = [self.batchTitleLineEdit.text(),self.emailLineEdit.text(), self.lotNumberLineEdit.text(),  self.deliveryZoneComboBox.currentText(), str(self.expirationDateDateTimeEdit.date), self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLabel.text(), self.conductivityTemperatureLineEdit.text() ]    
+            label = Label(self.listInfo )
+            label.exec_()
+            
+        except Exception as e: 
+            print(e)
         
 
 
