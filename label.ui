@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Dialog</class>
- <widget class="QDialog" name="Dialog">
+ <class>LabelWindow</class>
+ <widget class="QDialog" name="LabelWindow">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>895</width>
-    <height>466</height>
+    <width>699</width>
+    <height>388</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,8 +16,8 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>350</x>
-     <y>440</y>
+     <x>360</x>
+     <y>340</y>
      <width>311</width>
      <height>31</height>
     </rect>
@@ -32,10 +32,10 @@
   <widget class="QFrame" name="frame">
    <property name="geometry">
     <rect>
-     <x>20</x>
+     <x>30</x>
      <y>10</y>
-     <width>731</width>
-     <height>401</height>
+     <width>651</width>
+     <height>331</height>
     </rect>
    </property>
    <property name="autoFillBackground">
@@ -50,10 +50,10 @@
    <widget class="QWidget" name="horizontalLayoutWidget">
     <property name="geometry">
      <rect>
-      <x>50</x>
-      <y>20</y>
-      <width>661</width>
-      <height>324</height>
+      <x>0</x>
+      <y>0</y>
+      <width>651</width>
+      <height>331</height>
      </rect>
     </property>
     <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,0">
@@ -82,148 +82,124 @@
         </widget>
        </item>
        <item>
-        <widget class="QGroupBox" name="gridGroupBox_2">
-         <layout class="QGridLayout" name="gridLayout_2">
-          <item row="3" column="1">
-           <widget class="QLabel" name="label_11">
-            <property name="text">
-             <string>Conductivity</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="4">
-           <widget class="QLabel" name="label_17">
-            <property name="text">
-             <string>Exp</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="2">
-           <widget class="QLabel" name="dateLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="2">
-           <widget class="QLabel" name="deliveryLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="1">
-           <widget class="QLabel" name="labvasdv">
-            <property name="text">
-             <string>Delivery Room</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="1">
-           <widget class="QLabel" name="label_12">
-            <property name="text">
-             <string>pH</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="1">
-           <widget class="QLabel" name="Date">
-            <property name="text">
-             <string>Date</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="2">
-           <widget class="QLabel" name="conLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="4" column="5">
-           <widget class="QLabel" name="expLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="2">
-           <widget class="QLabel" name="lotLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="6" column="1">
-           <widget class="QLabel" name="edfasdf">
-            <property name="text">
-             <string>Lot Number</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="2">
-           <widget class="QLabel" name="pHLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="3">
-           <widget class="QLabel" name="conTemp">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="0" column="3">
-           <widget class="QLabel" name="batch_title">
-            <property name="font">
-             <font>
-              <pointsize>12</pointsize>
-             </font>
-            </property>
-            <property name="text">
-             <string>Batch_Title</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="4">
-           <widget class="QLabel" name="label_25">
-            <property name="text">
-             <string>C</string>
-            </property>
-           </widget>
-          </item>
-          <item row="3" column="4">
-           <widget class="QLabel" name="label_26">
-            <property name="text">
-             <string>C</string>
-            </property>
-           </widget>
-          </item>
-          <item row="2" column="3">
-           <widget class="QLabel" name="pHtemp">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="3">
-           <widget class="QLabel" name="expLabel_2">
-            <property name="text">
-             <string>Email</string>
-            </property>
-           </widget>
-          </item>
-          <item row="5" column="4">
-           <widget class="QLabel" name="emailLabel">
-            <property name="text">
-             <string>TextLabel</string>
-            </property>
-           </widget>
-          </item>
-         </layout>
+        <widget class="QLabel" name="batch_title">
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>25</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
         </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <widget class="QGroupBox" name="gridGroupBox_2">
+           <property name="title">
+            <string/>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_2">
+            <item row="3" column="1">
+             <widget class="QLabel" name="conLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="2" column="1">
+             <widget class="QLabel" name="pHLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="1">
+             <widget class="QLabel" name="deliveryLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="6" column="1">
+             <widget class="QLabel" name="lotLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="1">
+             <widget class="QLabel" name="dateLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="2">
+             <widget class="QLabel" name="expLabel">
+              <property name="inputMethodHints">
+               <set>Qt::ImhDate</set>
+              </property>
+              <property name="text">
+               <string/>
+              </property>
+             </widget>
+            </item>
+            <item row="5" column="2">
+             <widget class="QLabel" name="emailLabel">
+              <property name="text">
+               <string>TextLabel</string>
+              </property>
+              <property name="scaledContents">
+               <bool>true</bool>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="qrLabel">
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>100</height>
+            </size>
+           </property>
+           <property name="text">
+            <string>TextLabel</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
       </layout>
      </item>
@@ -254,7 +230,7 @@
           <number>0</number>
          </property>
          <item row="2" column="0">
-          <widget class="QLabel" name="label_6">
+          <widget class="QLabel" name="env">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -270,7 +246,7 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QLabel" name="label_3">
+          <widget class="QLabel" name="resp">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -286,7 +262,7 @@
           </widget>
          </item>
          <item row="1" column="1">
-          <widget class="QLabel" name="label_5">
+          <widget class="QLabel" name="haz">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -302,7 +278,7 @@
           </widget>
          </item>
          <item row="3" column="0">
-          <widget class="QLabel" name="label_8">
+          <widget class="QLabel" name="non">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -318,7 +294,7 @@
           </widget>
          </item>
          <item row="3" column="1">
-          <widget class="QLabel" name="label_9">
+          <widget class="QLabel" name="hhm">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -334,7 +310,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QLabel" name="label_7">
+          <widget class="QLabel" name="flam">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -350,7 +326,7 @@
           </widget>
          </item>
          <item row="1" column="0">
-          <widget class="QLabel" name="label_4">
+          <widget class="QLabel" name="tox">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -366,7 +342,7 @@
           </widget>
          </item>
          <item row="0" column="0">
-          <widget class="QLabel" name="label_2">
+          <widget class="QLabel" name="corr">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -391,33 +367,18 @@
  </widget>
  <resources>
   <include location="Resourcing.qrc"/>
+  <include location="../../.designer/backup/Resourcing.qrc"/>
  </resources>
  <connections>
   <connection>
    <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Dialog</receiver>
-   <slot>accept()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>248</x>
-     <y>254</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>157</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
    <signal>rejected()</signal>
-   <receiver>Dialog</receiver>
+   <receiver>LabelWindow</receiver>
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>316</x>
-     <y>260</y>
+     <x>636</x>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
