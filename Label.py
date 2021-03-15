@@ -6,8 +6,13 @@ from PySide2.QtPrintSupport import QPrintDialog, QPrinter
 from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QStylePainter
 from PySide2.QtUiTools import QUiLoader
 from LaelDialog import Ui_LabelWindow
+import zpl
 import io
+import sys
+
+import os
 from datetime import date
+import zebra
 import qrcode
 from PIL import Image
 from PySide2.QtWidgets import QWidget
@@ -73,18 +78,57 @@ class Label(QDialog, Ui_LabelWindow):
 
         return QPixmap.fromImage(qimg)
     def print_preview_dialog(self):
-     
         sshot = QWidget.grab(self.frame)
         sshot.save('sshot.png')
-        if self.printer is None:
-            self.printer = QPrinter(QPrinter.HighResolution)
-        form = QPrintDialog(self.printer, self)
-        if form.exec_():
-            painter = QPainter()
-            painter.begin(self.printer)
-            painter.drawPixmap(0,0, sshot)
-            painter.end()
+        #Instantiate print image object
+        sshot = sshot.toImage()
+        printer=QPrinter(QPrinter.HighResolution)
+        #Print window pops up
+        printDialog=QPrintDialog(printer,self)
+        if printDialog.exec_():
 
+            painter=QPainter(printer)
+            painter.begin(printer)
+            #Instantiated view window
+            rect=painter.viewport()
+            #Get the size of the picture
+            size=sshot.size()
+
+            size.scale(rect.size(),Qt.KeepAspectRatio)
+            #Set the properties of the view window
+            painter.setViewport(rect.x(),rect.y(),size.width(),size.height())
+
+            #Set the size of the window to the size of the picture, and draw the picture in the window
+            painter.setWindow(sshot.rect())
+            painter.drawImage(0,0,sshot)
+            painter.end()
+              
+       
+    def zebraPrint(self):
+        l = zpl.Label(53.30, 104.10, 12)
+        height = 0
+        width= 104.10
+        l.origin(0, 53.3)
+        l.write_graphic(Image.open('sshot.png'), width)
+        l.endorigin()
+        print(l.dumpZPL())
+        l.preview()
+
+    def printImage(image, printer, scaleToFillPage=False): 
+        dialog = QPrintDialog(printer) 
+        if dialog.exec_():
+            painter = QPainter(printer) 
+            painter.setRenderHint(QPainter.Antialiasing) 
+            rect = painter.viewport() 
+            size = image.size()
+            size.scale(rect.size(), Qt.KeepAspectRatio) 
+            painter.setViewport(rect.x(), rect.y(), size.width(), size.height())
+        if scaleToFillPage:
+            painter.setWindow(image.rect())
+        if isinstance(image, QPixmap):
+            painter.drawPixmap(0, 0, image) 
+        else:
+            painter.drawImage(0, 0, image)
     def checkShit(self, batch, pH):
         fpH = float(pH)
         corrosive_list = ['Phosphoric', 'Hydroxide', 'Acid', 'Formic', 'Sodium Sulfate', 'Ethylmaleidmide', 'Sodium Cyanoborohydride', 'NaOH' ]
