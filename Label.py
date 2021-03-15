@@ -17,8 +17,9 @@ import qrcode
 from PIL import Image
 from PySide2.QtWidgets import QWidget
 class Label(QDialog, Ui_LabelWindow):
-    def __init__(self, listInfo,   parent= None):
+    def __init__(self, listInfo, results,   parent= None):
         self.listInfo = listInfo
+        self.results = results
         super(Label, self).__init__(parent)
         self.setupUi(self)
         self.image = QImage()
@@ -53,6 +54,7 @@ class Label(QDialog, Ui_LabelWindow):
         self.batch_title.setText(listInfo[0])
         self.emailLabel.setText("Email: " + listInfo[1])
         self.lotLabel.setText("Lot: "+ listInfo[2])
+        self.lot2.setText("Lot: "+ listInfo[2])
         self.deliveryLabel.setText("Drop Zone: " + listInfo [3])
         self.expLabel.setText("Exp: "+listInfo[4])
         self.dialog = None
@@ -65,6 +67,13 @@ class Label(QDialog, Ui_LabelWindow):
         self.qrLabel.setPixmap(self.pil2pixmap(img))
         self.qrLabel.setScaledContents(True)
         self.checkShit(listInfo[0], listInfo[5])
+        self.doTheChemicals(self.results)
+    def doTheChemicals(self, results):
+        changeDict ={"NaOH": "Sodium Hydroxide", "NaCl":"Sodium Chloride", "PS20": "Polysorbate 20", "PS80": "Polysorbate 80", "CHAPS":"3-((3-cholamidopropyl) dimethylammonio)-1-propanesulfonate(CHAPS)", "IGF-1": "Insulin Growth Factor - 1", "DTPA":"Diethylenetriamine Pentaacetate(DTPA)", "SDS": "Sodium Dodecyl Sulfate", "HFIP":"Hexafluoroisopropanol(HFIP)", "HPMC": "Hydroxymethylcellulose", "HPBCD": "2-Hydroxypropyl-beta-cyclodextrin", " PEG": " Polyethylene Glycol(PEG)","EDTA": "Ethylenediaminetetraacetic acid(EDTA)", "EGTA": "ethylene glycol-bis('-aminoethyl ether)-N,N,N',N'-tetraacetic acid(EGTA)", "Tris":"tris(hydroxymethyl)aminomethane(Tris)", "MES": "2-(N-morpholino)ethanesulfonic acid(MES)", "MOPS":"3-morpholinopropane-1-sulfonic acid(MOPS)", "HEPES": "2-[4-(2-hydroxyethyl)piperazin-1-yl]ethanesulfonic acid(HEPES)", "HCl": "Hydrochloric Acid", "H2O": "Dihydrogen Monoxide(H2O)"}
+        reslist = results.split(",")
+        reslist = [changeDict.get(item, item) for item in reslist]
+        self.results = ", ".join(reslist)
+        self.resuls.setText(self.results)
     def createBarcode(self, batch, email, lot):
         codeStr = batch + "*" + email + "*" + lot
         img = qrcode.make(codeStr)
@@ -79,29 +88,38 @@ class Label(QDialog, Ui_LabelWindow):
         return QPixmap.fromImage(qimg)
     def print_preview_dialog(self):
         sshot = QWidget.grab(self.frame)
+        sshot2 = QWidget.grab(self.frame2)
         sshot.save('sshot.png')
+        sshot2.save('sshot2.png')
+      
         #Instantiate print image object
         sshot = sshot.toImage()
+        sshot2 = sshot2.toImage()
+        screenshots = [sshot, sshot2]
         printer=QPrinter(QPrinter.HighResolution)
+        printer.setPageSize(4,2,QPrinter.Inch)
         #Print window pops up
+        
         printDialog=QPrintDialog(printer,self)
-        if printDialog.exec_():
+        for shot in screenshots: 
+            if printDialog.exec_():
 
-            painter=QPainter(printer)
-            painter.begin(printer)
+                painter=QPainter(printer)
+                painter.begin(printer)
             #Instantiated view window
-            rect=painter.viewport()
+                rect=painter.viewport()
             #Get the size of the picture
-            size=sshot.size()
+                size=shot.size()
 
-            size.scale(rect.size(),Qt.KeepAspectRatio)
+                size.scale(rect.size(),Qt.KeepAspectRatio)
             #Set the properties of the view window
-            painter.setViewport(rect.x(),rect.y(),size.width(),size.height())
+                painter.setViewport(rect.x(),rect.y(),size.width(),size.height())
 
             #Set the size of the window to the size of the picture, and draw the picture in the window
-            painter.setWindow(sshot.rect())
-            painter.drawImage(0,0,sshot)
-            painter.end()
+                painter.setWindow(shot.rect())
+                painter.drawImage(0,0,shot)
+                painter.end()
+                painter
               
        
     def zebraPrint(self):

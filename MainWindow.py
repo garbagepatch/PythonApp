@@ -67,7 +67,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def OpenLabels(self):
         try: 
             self.listInfo = [self.batchTitleLineEdit.text(),self.emailLineEdit.text(), self.lotNumberLineEdit.text(),  self.deliveryZoneComboBox.currentText(), self.expirationDateDateTimeEdit.date().toString("yyyy-MM-dd"), self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLineEdit.text(), self.conductivityTemperatureLineEdit.text() ]    
-            self.label = Label(self.listInfo )
+            self.label = Label(self.listInfo, self.textEdit.toPlainText() )
             self.label.show()
             
         except Exception as e: 

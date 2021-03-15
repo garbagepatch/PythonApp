@@ -131,30 +131,37 @@ class Ui_LabelWindow(object):
         self.gridLayout_2.setObjectName(u"gridLayout_2")
         self.conLabel = QLabel(self.gridGroupBox_2)
         self.conLabel.setObjectName(u"conLabel")
+        font1 = QFont()
+        font1.setPointSize(10)
+        self.conLabel.setFont(font1)
         self.conLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.conLabel, 3, 1, 1, 1)
 
         self.pHLabel = QLabel(self.gridGroupBox_2)
         self.pHLabel.setObjectName(u"pHLabel")
+        self.pHLabel.setFont(font1)
         self.pHLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.pHLabel, 2, 1, 1, 1)
 
         self.deliveryLabel = QLabel(self.gridGroupBox_2)
         self.deliveryLabel.setObjectName(u"deliveryLabel")
+        self.deliveryLabel.setFont(font1)
         self.deliveryLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.deliveryLabel, 5, 1, 1, 1)
 
         self.lotLabel = QLabel(self.gridGroupBox_2)
         self.lotLabel.setObjectName(u"lotLabel")
+        self.lotLabel.setFont(font1)
         self.lotLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.lotLabel, 6, 1, 1, 1)
 
         self.dateLabel = QLabel(self.gridGroupBox_2)
         self.dateLabel.setObjectName(u"dateLabel")
+        self.dateLabel.setFont(font1)
         self.dateLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.dateLabel, 4, 1, 1, 1)
@@ -167,6 +174,7 @@ class Ui_LabelWindow(object):
 
         self.emailLabel = QLabel(self.gridGroupBox_2)
         self.emailLabel.setObjectName(u"emailLabel")
+        self.emailLabel.setFont(font1)
         self.emailLabel.setScaledContents(True)
 
         self.gridLayout_2.addWidget(self.emailLabel, 5, 2, 1, 1)
