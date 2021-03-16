@@ -16,7 +16,7 @@
   <widget class="QDialogButtonBox" name="buttonBox">
    <property name="geometry">
     <rect>
-     <x>360</x>
+     <x>340</x>
      <y>340</y>
      <width>311</width>
      <height>31</height>
@@ -34,7 +34,7 @@
     <rect>
      <x>0</x>
      <y>10</y>
-     <width>681</width>
+     <width>651</width>
      <height>331</height>
     </rect>
    </property>
@@ -553,7 +553,7 @@
              <widget class="QLabel" name="conLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">
@@ -568,7 +568,7 @@
              <widget class="QLabel" name="pHLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">
@@ -583,7 +583,7 @@
              <widget class="QLabel" name="deliveryLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">
@@ -598,7 +598,7 @@
              <widget class="QLabel" name="lotLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">
@@ -613,7 +613,7 @@
              <widget class="QLabel" name="dateLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">
@@ -638,7 +638,7 @@
              <widget class="QLabel" name="emailLabel">
               <property name="font">
                <font>
-                <pointsize>10</pointsize>
+                <pointsize>8</pointsize>
                </font>
               </property>
               <property name="text">

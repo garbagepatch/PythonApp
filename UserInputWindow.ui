@@ -486,188 +486,61 @@
        <property name="bottomMargin">
         <number>22</number>
        </property>
-       <item row="0" column="0">
+       <item row="1" column="0">
+        <widget class="QLabel" name="requestTypeLabel">
+         <property name="text">
+          <string>Request Type</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comboBox">
+         <item>
+          <property name="text">
+           <string>Buffers</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Media</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="2" column="0">
         <widget class="QLabel" name="batchTitleLabel">
          <property name="text">
           <string>Batch Title</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="1">
+       <item row="2" column="1">
         <widget class="QLineEdit" name="batchTitleLineEdit"/>
        </item>
-       <item row="2" column="0">
+       <item row="3" column="0">
+        <spacer name="verticalSpacer_9">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="4" column="0">
         <widget class="QLabel" name="emailLabel">
          <property name="text">
           <string>Email</string>
          </property>
         </widget>
        </item>
-       <item row="2" column="1">
+       <item row="4" column="1">
         <widget class="QLineEdit" name="emailLineEdit"/>
        </item>
-       <item row="4" column="0">
-        <widget class="QLabel" name="lotNumberLabel">
-         <property name="text">
-          <string>Lot Number</string>
-         </property>
-        </widget>
-       </item>
-       <item row="4" column="1">
-        <widget class="QLineEdit" name="lotNumberLineEdit"/>
-       </item>
-       <item row="6" column="0">
-        <widget class="QLabel" name="deliveryZoneLabel">
-         <property name="text">
-          <string>Delivery Zone</string>
-         </property>
-        </widget>
-       </item>
-       <item row="6" column="1">
-        <widget class="QComboBox" name="deliveryZoneComboBox"/>
-       </item>
-       <item row="8" column="0">
-        <widget class="QLabel" name="pHLabel">
-         <property name="text">
-          <string>pH</string>
-         </property>
-        </widget>
-       </item>
-       <item row="8" column="1">
-        <widget class="QLineEdit" name="pHLineEdit"/>
-       </item>
-       <item row="10" column="0">
-        <widget class="QLabel" name="pHTemperatureLabel">
-         <property name="text">
-          <string>pH temperature</string>
-         </property>
-        </widget>
-       </item>
-       <item row="10" column="1">
-        <widget class="QLineEdit" name="pHTemperatureLineEdit"/>
-       </item>
-       <item row="12" column="0">
-        <widget class="QLabel" name="conductivityLabel">
-         <property name="text">
-          <string>Conductivity</string>
-         </property>
-        </widget>
-       </item>
-       <item row="12" column="1">
-        <widget class="QLineEdit" name="conductivityLineEdit"/>
-       </item>
-       <item row="14" column="0">
-        <widget class="QLabel" name="conductivityTemperatureLabel">
-         <property name="text">
-          <string>Conductivity Temperature </string>
-         </property>
-        </widget>
-       </item>
-       <item row="14" column="1">
-        <widget class="QLineEdit" name="conductivityTemperatureLineEdit"/>
-       </item>
-       <item row="16" column="0">
-        <widget class="QLabel" name="expirationDateLabel">
-         <property name="text">
-          <string>Expiration Date</string>
-         </property>
-        </widget>
-       </item>
-       <item row="16" column="1">
-        <widget class="QDateTimeEdit" name="expirationDateDateTimeEdit"/>
-       </item>
-       <item row="15" column="0">
-        <spacer name="verticalSpacer">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="17" column="0">
-        <spacer name="verticalSpacer_2">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="13" column="0">
-        <spacer name="verticalSpacer_3">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="11" column="0">
-        <spacer name="verticalSpacer_4">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="9" column="0">
-        <spacer name="verticalSpacer_5">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="7" column="0">
-        <spacer name="verticalSpacer_6">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
        <item row="5" column="0">
-        <spacer name="verticalSpacer_7">
-         <property name="orientation">
-          <enum>Qt::Vertical</enum>
-         </property>
-         <property name="sizeHint" stdset="0">
-          <size>
-           <width>20</width>
-           <height>40</height>
-          </size>
-         </property>
-        </spacer>
-       </item>
-       <item row="3" column="0">
         <spacer name="verticalSpacer_8">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
@@ -680,8 +553,176 @@
          </property>
         </spacer>
        </item>
-       <item row="1" column="0">
-        <spacer name="verticalSpacer_9">
+       <item row="6" column="0">
+        <widget class="QLabel" name="lotNumberLabel">
+         <property name="text">
+          <string>Lot Number</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QLineEdit" name="lotNumberLineEdit"/>
+       </item>
+       <item row="7" column="0">
+        <spacer name="verticalSpacer_7">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="deliveryZoneLabel">
+         <property name="text">
+          <string>Delivery Zone</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="deliveryZoneComboBox"/>
+       </item>
+       <item row="9" column="0">
+        <spacer name="verticalSpacer_6">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="pHLabel">
+         <property name="text">
+          <string>pH</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QLineEdit" name="pHLineEdit"/>
+       </item>
+       <item row="11" column="0">
+        <spacer name="verticalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="12" column="0">
+        <widget class="QLabel" name="pHTemperatureLabel">
+         <property name="text">
+          <string>pH temperature</string>
+         </property>
+        </widget>
+       </item>
+       <item row="12" column="1">
+        <widget class="QLineEdit" name="pHTemperatureLineEdit"/>
+       </item>
+       <item row="13" column="0">
+        <spacer name="verticalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="14" column="0">
+        <widget class="QLabel" name="conductivityLabel">
+         <property name="text">
+          <string>Conductivity</string>
+         </property>
+        </widget>
+       </item>
+       <item row="14" column="1">
+        <widget class="QLineEdit" name="conductivityLineEdit"/>
+       </item>
+       <item row="15" column="0">
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="16" column="0">
+        <widget class="QLabel" name="conductivityTemperatureLabel">
+         <property name="text">
+          <string>Conductivity Temperature </string>
+         </property>
+        </widget>
+       </item>
+       <item row="16" column="1">
+        <widget class="QLineEdit" name="conductivityTemperatureLineEdit"/>
+       </item>
+       <item row="17" column="0">
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item row="18" column="0">
+        <widget class="QLabel" name="expirationDateLabel">
+         <property name="text">
+          <string>Expiration Date</string>
+         </property>
+        </widget>
+       </item>
+       <item row="18" column="1">
+        <widget class="QDateTimeEdit" name="expirationDateDateTimeEdit">
+         <property name="dateTime">
+          <datetime>
+           <hour>0</hour>
+           <minute>0</minute>
+           <second>0</second>
+           <year>2021</year>
+           <month>3</month>
+           <day>16</day>
+          </datetime>
+         </property>
+         <property name="displayFormat">
+          <string>M/d/yyyy </string>
+         </property>
+         <property name="calendarPopup">
+          <bool>true</bool>
+         </property>
+         <property name="currentSectionIndex">
+          <number>0</number>
+         </property>
+        </widget>
+       </item>
+       <item row="19" column="0">
+        <spacer name="verticalSpacer_2">
          <property name="orientation">
           <enum>Qt::Vertical</enum>
          </property>

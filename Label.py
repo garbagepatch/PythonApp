@@ -1,25 +1,22 @@
-from UserInputWindow import Ui_MainWindow
-from PySide2 import QtCore, QtGui, QtWidgets, QtPrintSupport
+
+
 from PySide2.QtCore import *
-from PySide2.QtGui import *
+from PySide2.QtGui import * 
 from PySide2.QtPrintSupport import QPrintDialog, QPrinter
-from PySide2.QtWidgets import QApplication, QMainWindow, QDialog, QStylePainter
-from PySide2.QtUiTools import QUiLoader
+from PySide2.QtWidgets import QDialog
 from LaelDialog import Ui_LabelWindow
 import zpl
 import io
-import sys
 
-import os
 from datetime import date
-import zebra
 import qrcode
 from PIL import Image
 from PySide2.QtWidgets import QWidget
 class Label(QDialog, Ui_LabelWindow):
-    def __init__(self, listInfo, results,   parent= None):
+    def __init__(self, listInfo, results, isMedia,  parent= None):
         self.listInfo = listInfo
         self.results = results
+        self.isMedia = isMedia
         super(Label, self).__init__(parent)
         self.setupUi(self)
         self.image = QImage()
@@ -46,7 +43,7 @@ class Label(QDialog, Ui_LabelWindow):
         self.nonPix = QPixmap(self.nonImg)
         self.toxImg = QImage("toxic.png")
         self.toxPix = QPixmap(self.toxImg)
-        self.hmmImg = QImage("hhm.png")
+        self.hmmImg = QImage("HHMp.png")
         self.hhmPix = QPixmap(self.hmmImg)
         self.hazImg = QImage("warning.png")
         self.hazPix = QPixmap(self.hazImg)
@@ -58,9 +55,13 @@ class Label(QDialog, Ui_LabelWindow):
         self.deliveryLabel.setText("Drop Zone: " + listInfo [3])
         self.expLabel.setText("Exp: "+listInfo[4])
         self.dialog = None
+        if self.isMedia:
+            self.conLabel.setText("pCO2: " + listInfo[7]+ "mmHg/ Osmolality: "+ listInfo[8] + "mOsm/kg" )
+        else:
+             self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
         self.pHLabel.setText("pH: " + listInfo[5]+" @ "+listInfo[6] + "C")
        
-        self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
+       
         self.printer = None
         self.buttonBox.accepted.connect(self.print_preview_dialog)
         img = self.createBarcode( listInfo[1], listInfo[0],listInfo[2])
@@ -91,18 +92,20 @@ class Label(QDialog, Ui_LabelWindow):
         sshot2 = QWidget.grab(self.frame2)
         sshot.save('sshot.png')
         sshot2.save('sshot2.png')
-      
+
         #Instantiate print image object
         sshot = sshot.toImage()
         sshot2 = sshot2.toImage()
         screenshots = [sshot, sshot2]
         printer=QPrinter(QPrinter.HighResolution)
-        printer.setPageSize(4,2,QPrinter.Inch)
+        paperSize = QPageSize(QSizeF(4.05, 2.05), QPageSize.Inch)
+        printer.setPageSize(paperSize)
         #Print window pops up
         
         printDialog=QPrintDialog(printer,self)
-        for shot in screenshots: 
-            if printDialog.exec_():
+        
+        if printDialog.exec_():
+            for shot in screenshots: 
 
                 painter=QPainter(printer)
                 painter.begin(printer)
@@ -148,7 +151,16 @@ class Label(QDialog, Ui_LabelWindow):
         else:
             painter.drawImage(0, 0, image)
     def checkShit(self, batch, pH):
-        fpH = float(pH)
+        try:
+            fpH = float(pH)
+            if fpH <= 5.5 or fpH >= 10.5:
+                self.isCorr = True
+                img = QImage("corrosive.png")
+                corrpix = QPixmap(img)
+                self.corr.setPixmap(corrpix)
+        except:
+            self.pHLabel.SetVisible(False)
+
         corrosive_list = ['Phosphoric', 'Hydroxide', 'Acid', 'Formic', 'Sodium Sulfate', 'Ethylmaleidmide', 'Sodium Cyanoborohydride', 'NaOH' ]
         flam_list = ['Acetonitrile', 'Acetone', 'Methanol', 'Formic Acid', 'Sodium Dodecyl Sulfate', 'SDS', 'Ethanol', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']
         tox_list = ['Methanol', 'Formic Acid', 'Ethylmaleidmide', 'Azide', 'Sodium Cyanoborohydride']
@@ -156,12 +168,7 @@ class Label(QDialog, Ui_LabelWindow):
         haz_list = ['Benzyl Alcohol', 'EDTA', 'Ammonium Acetate', 'Ammonium Hydroxide', 'Acetone', 'DMSO', 'Guanidine', 'Methanol', 'Ammonium Formate', 'Ethylmaleidmide', 'Sodium Sulfate', 'Sodium Dodecyl Sulfate', 'Urea', 'Tris', 'Sodium Perchlorate']
         resp_list = ['Acetone']
         hhm_list = ['Azide', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']
-        if fpH <= 5.5 or fpH >= 10.5:
-            self.isCorr = True
-            img = QImage("corrosive.png")
-            corrpix = QPixmap(img)
-            self.corr.setPixmap(corrpix)
-
+        
         if "Phosphoric" in batch:
             self.corr.setPixmap(self.corrPix)
 
