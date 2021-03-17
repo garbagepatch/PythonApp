@@ -1819,8 +1819,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>636</x>
-     <y>450</y>
+     <x>616</x>
+     <y>370</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
