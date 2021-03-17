@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import true
 from sqlalchemy.sql.sqltypes import BOOLEAN
 from data.session import Base
 class ChemicalHazards(Base):
-   __tablename__="Chemical Hazards"
+   __tablename__="ChemicalHazards"
    id=Column(Integer, primary_key=True, autoincrement=True)
    Chemical = Column(String)
    Corrosive= Column(BOOLEAN, default=False)

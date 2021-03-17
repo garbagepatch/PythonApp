@@ -2,9 +2,9 @@ from UserInputWindow import Ui_MainWindow
 from Label import Label
 from PySide2 import QtWidgets
 
-from PySide2.QtGui import QIcon
+from PySide2.QtGui import QIcon, QImage, QPixmap
 from PySide2.QtWidgets import  QMainWindow, QAction
-
+from EditStuff import EditStuff
 from datetime import date
 import sys
 
@@ -49,7 +49,8 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
  
         exitAction = QAction(QIcon('exit.png'), "Exit", self)
         exitAction.setShortcut('Ctrl+X')
- 
+        editAction = QAction(QIcon('save.png'), "edit", self)
+        editAction.setShortcut('Ctrl+R')
  
  
  
@@ -57,13 +58,18 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
  
 
  
- 
+
         fileMenu.addAction(openAction)
         fileMenu.addAction(saveAction)
+        editAction.triggered.connect(self.editStuff)
         fileMenu.addAction(exitAction)
+        editMenu.addAction(editAction)
  
     def exit_app(self):
         self.close()
+    def editStuff(self):
+        editStuff = EditStuff()
+        editStuff.show()
     def SetLabels(self):
         if(self.comboBox.currentText() == "Media"):
             self.conductivityLabel.setText("pCO2")
@@ -88,6 +94,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
+    
     app.setStyle('Fusion')
     main = HappyLabels()
     main.show()
