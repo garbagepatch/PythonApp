@@ -1,6 +1,8 @@
 from PySide2 import QtSql, QtGui
 import sqlite3
 
+from PySide2.QtCore import QFile
+
 def createConnection():
     db = QtSql.QSqlDatabase.addDatabase("QSQLITE")
     db.setDatabaseName("LabelBase.db")
