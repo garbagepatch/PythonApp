@@ -167,7 +167,7 @@ class Label(QDialog, Ui_LabelWindow):
                 corrpix = QPixmap(img)
                 self.corr.setPixmap(corrpix)
         except:
-            self.pHLabel.SetVisible(False)
+            self.pHLabel.setVisible(False)
 
         corrosive_list = createCorrosiveList(self.connection)
         flam_list = createFlammableList(self.connection) 
