@@ -21,6 +21,12 @@ def sqlite3con():
         con = sqlite3.connect("LabelBase.db")
     except Exception as e:
         print(e)
+        sqlfile = open("exported2.sql")
+        sqlfilestr = sqlfile.read()
+        sqlite3.Cursor.executescript(sqlfilestr)
+        con = sqlite3.connect("LabelBase.db")
+
+
     return con
 def createCorrosiveList(con):
     cur = con.cursor()
