@@ -7,7 +7,7 @@ from PySide2.QtWidgets import QDialog
 from LaelDialog import Ui_LabelWindow
 import zpl
 import io
-
+from data.connection import *
 from datetime import date
 import qrcode
 from PIL import Image
@@ -22,10 +22,17 @@ class Label(QDialog, Ui_LabelWindow):
         self.image = QImage()
         self.dirty = False
         self.filename = None
-        self.isFlam = self.isHHM = self.isTox = self.isHaz = self.isResp = self.isCorr = self.isEnv = False
+        self.connection = sqlite3con()
+        self.isFlam = False 
+        self.isHHM = False
+        self.isTox = False 
+        self.isHaz = False
+        self.isResp =False 
+        self.isCorr = False
+        self.isEnv  = False
         self.corr.clear()
         self.flam.clear()
-        self.hhm.clear()
+        self.hhmIcon.clear()
         self.tox.clear()
         self.resp.clear()
         self.non.clear()
@@ -43,8 +50,8 @@ class Label(QDialog, Ui_LabelWindow):
         self.nonPix = QPixmap(self.nonImg)
         self.toxImg = QImage("toxic.png")
         self.toxPix = QPixmap(self.toxImg)
-        self.hmmImg = QImage("HHMp.png")
-        self.hhmPix = QPixmap(self.hmmImg)
+        self.hhmImg = QImage("HHM.png")
+        self.hhmPix = QPixmap(self.hhmImg)
         self.hazImg = QImage("warning.png")
         self.hazPix = QPixmap(self.hazImg)
         self.dateLabel.setText(str(date.today()))
@@ -58,7 +65,7 @@ class Label(QDialog, Ui_LabelWindow):
         if self.isMedia:
             self.conLabel.setText("pCO2: " + listInfo[7]+ "mmHg/ Osmolality: "+ listInfo[8] + "mOsm/kg" )
         else:
-             self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
+            self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
         self.pHLabel.setText("pH: " + listInfo[5]+" @ "+listInfo[6] + "C")
        
        
@@ -70,11 +77,12 @@ class Label(QDialog, Ui_LabelWindow):
         self.checkShit(listInfo[0], listInfo[5])
         self.doTheChemicals(self.results)
     def doTheChemicals(self, results):
-        changeDict ={"NaOH": "Sodium Hydroxide", "NaCl":"Sodium Chloride", "PS20": "Polysorbate 20", "PS80": "Polysorbate 80", "CHAPS":"3-((3-cholamidopropyl) dimethylammonio)-1-propanesulfonate(CHAPS)", "IGF-1": "Insulin Growth Factor - 1", "DTPA":"Diethylenetriamine Pentaacetate(DTPA)", "SDS": "Sodium Dodecyl Sulfate", "HFIP":"Hexafluoroisopropanol(HFIP)", "HPMC": "Hydroxymethylcellulose", "HPBCD": "2-Hydroxypropyl-beta-cyclodextrin", " PEG": " Polyethylene Glycol(PEG)","EDTA": "Ethylenediaminetetraacetic acid(EDTA)", "EGTA": "ethylene glycol-bis('-aminoethyl ether)-N,N,N',N'-tetraacetic acid(EGTA)", "Tris":"tris(hydroxymethyl)aminomethane(Tris)", "MES": "2-(N-morpholino)ethanesulfonic acid(MES)", "MOPS":"3-morpholinopropane-1-sulfonic acid(MOPS)", "HEPES": "2-[4-(2-hydroxyethyl)piperazin-1-yl]ethanesulfonic acid(HEPES)", "HCl": "Hydrochloric Acid", "H2O": "Dihydrogen Monoxide(H2O)"}
+        """changeDict ={"NaOH": "Sodium Hydroxide", "NaCl":"Sodium Chloride", "PS20": "Polysorbate 20", "PS80": "Polysorbate 80", "CHAPS":"3-((3-cholamidopropyl) dimethylammonio)-1-propanesulfonate(CHAPS)", "IGF-1": "Insulin Growth Factor - 1", "DTPA":"Diethylenetriamine Pentaacetate(DTPA)", "SDS": "Sodium Dodecyl Sulfate", "HFIP":"Hexafluoroisopropanol(HFIP)", "HPMC": "Hydroxymethylcellulose", "HPBCD": "2-Hydroxypropyl-beta-cyclodextrin", " PEG": " Polyethylene Glycol(PEG)","EDTA": "Ethylenediaminetetraacetic acid(EDTA)", "EGTA": "ethylene glycol-bis('-aminoethyl ether)-N,N,N',N'-tetraacetic acid(EGTA)", "Tris":"tris(hydroxymethyl)aminomethane(Tris)", "MES": "2-(N-morpholino)ethanesulfonic acid(MES)", "MOPS":"3-morpholinopropane-1-sulfonic acid(MOPS)", "HEPES": "2-[4-(2-hydroxyethyl)piperazin-1-yl]ethanesulfonic acid(HEPES)", "HCl": "Hydrochloric Acid", "H2O": "Dihydrogen Monoxide(H2O)"}
         reslist = results.split(",")
         reslist = [changeDict.get(item, item) for item in reslist]
-        self.results = ", ".join(reslist)
-        self.resuls.setText(self.results)
+        self.results = ", ".join(reslist)"""
+        giffy = checkIfResult(self.connection, results)
+        self.resuls.setText(giffy)
     def createBarcode(self, batch, email, lot):
         codeStr = batch + "*" + email + "*" + lot
         img = qrcode.make(codeStr)
@@ -161,47 +169,44 @@ class Label(QDialog, Ui_LabelWindow):
         except:
             self.pHLabel.SetVisible(False)
 
-        corrosive_list = ['Phosphoric', 'Hydroxide', 'Acid', 'Formic', 'Sodium Sulfate', 'Ethylmaleidmide', 'Sodium Cyanoborohydride', 'NaOH' ]
-        flam_list = ['Acetonitrile', 'Acetone', 'Methanol', 'Formic Acid', 'Sodium Dodecyl Sulfate', 'SDS', 'Ethanol', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']
-        tox_list = ['Methanol', 'Formic Acid', 'Ethylmaleidmide', 'Azide', 'Sodium Cyanoborohydride']
-        env_list = ['Azide', 'Sodium Cyanoborohydride']
-        haz_list = ['Benzyl Alcohol', 'EDTA', 'Ammonium Acetate', 'Ammonium Hydroxide', 'Acetone', 'DMSO', 'Guanidine', 'Methanol', 'Ammonium Formate', 'Ethylmaleidmide', 'Sodium Sulfate', 'Sodium Dodecyl Sulfate', 'Urea', 'Tris', 'Sodium Perchlorate']
-        resp_list = ['Acetone']
+        corrosive_list = createCorrosiveList(self.connection)
+        flam_list = createFlammableList(self.connection) 
+        """['Acetonitrile', 'Acetone', 'Methanol', 'Formic Acid', 'Sodium Dodecyl Sulfate', 'SDS', 'Ethanol', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']"""
+        tox_list = createToxicList(self.connection)
+        """['Methanol', 'Formic Acid', 'Ethylmaleidmide', 'Azide', 'Sodium Cyanoborohydride']"""
+        env_list = createEnvironmentList(self.connection)
+        """['Azide', 'Sodium Cyanoborohydride']"""
+        haz_list = createHazardousList(self.connection)
+        """['Benzyl Alcohol', 'EDTA', 'Ammonium Acetate', 'Ammonium Hydroxide', 'Acetone', 'DMSO', 'Guanidine', 'Methanol', 'Ammonium Formate', 'Ethylmaleidmide', 'Sodium Sulfate', 'Sodium Dodecyl Sulfate', 'Urea', 'Tris', 'Sodium Perchlorate']"""
+        resp_list = createRespiratoryList(self.connection)
+   
         hhm_list = ['Azide', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']
-        
-        if "Phosphoric" in batch:
-            self.corr.setPixmap(self.corrPix)
-
-        if "Acid" in batch:
-            self.corr.setPixmap(self.corrPix)
-
+        createHHMList(self.connection) 
       
-  
         if any(ele in batch for ele in corrosive_list):
             self.isCorr = True
             self.corr.setPixmap(self.corrPix)
 
-        elif any(ele in batch for ele in flam_list):
+        if any(ele in batch for ele in flam_list):
             self.isFlam = True
             self.flam.setPixmap(self.flamPix)
-        elif any(ele in batch for ele in tox_list):
+        if any(ele in batch for ele in tox_list):
             self.isTox = True
             self.tox.setPixmap(self.toxPix)
-        elif any(ele in batch for ele in resp_list):
+        if any(ele in batch for ele in resp_list):
             self.isResp = True
             self.resp.setPixmap(self.respPix)
-        elif any(ele in batch for ele in env_list):
+        if any(ele in batch for ele in env_list):
             self.isEnv = True
             self.env.setPixmap(self.envPix)
-        elif any(ele in batch for ele in hhm_list):
+        if any(ele in batch for ele in hhm_list):
             self.isHHM = True
-            self.hhm.setPixmap(self.hhmPix)
-        elif any(ele in batch for ele in haz_list):
+            self.hhmIcon.setPixmap(self.hhmPix)
+        if any(ele in batch for ele in haz_list):
             self.isHaz = True
             self.haz.setPixmap(self.hazPix)
-        else:
-            if self.isFlam is False  and self.isHHM is False  and self.isTox is False and self.isHaz is False and self.isResp is False and self.isCorr is False and self.isEnv is False:
-                self.non.setPixmap(self.nonPix)
+        if self.isFlam is False  and self.isHHM is False  and self.isTox is False and self.isHaz is False and self.isResp is False and self.isCorr is False and self.isEnv is False:
+            self.non.setPixmap(self.nonPix)
  
  
  

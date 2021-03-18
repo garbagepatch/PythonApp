@@ -7,7 +7,7 @@ from PySide2.QtWidgets import  QMainWindow, QAction
 from EditStuff import EditStuff
 from datetime import date
 import sys
-
+from data.connection import createConnection
 class HappyLabels(QMainWindow, Ui_MainWindow):
     def __init__(self):
         super(HappyLabels, self).__init__()
@@ -29,6 +29,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         self.expdate = date.today()
         self.listInfo = []
         self.label = None
+        self.editthing = None
         self.createMenu()
 
     def createMenu(self):
@@ -68,8 +69,11 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
     def exit_app(self):
         self.close()
     def editStuff(self):
-        editStuff = EditStuff()
-        editStuff.show()
+        try:
+            self.editthings = EditStuff()
+            self.editthings.show()
+        except Exception as e:
+            print(e)
     def SetLabels(self):
         if(self.comboBox.currentText() == "Media"):
             self.conductivityLabel.setText("pCO2")
@@ -94,7 +98,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
-    
+    createConnection()
     app.setStyle('Fusion')
     main = HappyLabels()
     main.show()
