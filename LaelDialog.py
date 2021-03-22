@@ -13,23 +13,19 @@ from PySide2.QtGui import *
 from PySide2.QtWidgets import *
 
 import Resourcing_rc
+import Resourcing_rc
 
 class Ui_LabelWindow(object):
     def setupUi(self, LabelWindow):
         if not LabelWindow.objectName():
             LabelWindow.setObjectName(u"LabelWindow")
-        LabelWindow.resize(706, 748)
+        LabelWindow.resize(1208, 900)
         icon = QIcon()
         icon.addFile(u":/newPrefix/drawing.png", QSize(), QIcon.Normal, QIcon.Off)
         LabelWindow.setWindowIcon(icon)
-        self.buttonBox = QDialogButtonBox(LabelWindow)
-        self.buttonBox.setObjectName(u"buttonBox")
-        self.buttonBox.setGeometry(QRect(390, 350, 311, 31))
-        self.buttonBox.setOrientation(Qt.Horizontal)
-        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
         self.frame2 = QFrame(LabelWindow)
         self.frame2.setObjectName(u"frame2")
-        self.frame2.setGeometry(QRect(0, 440, 671, 301))
+        self.frame2.setGeometry(QRect(0, 440, 812, 406))
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -103,7 +99,7 @@ class Ui_LabelWindow(object):
         self.frame2.setFrameShadow(QFrame.Raised)
         self.verticalLayoutWidget = QWidget(self.frame2)
         self.verticalLayoutWidget.setObjectName(u"verticalLayoutWidget")
-        self.verticalLayoutWidget.setGeometry(QRect(9, 9, 671, 327))
+        self.verticalLayoutWidget.setGeometry(QRect(9, 5, 791, 401))
         self.verticalLayout_3 = QVBoxLayout(self.verticalLayoutWidget)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.verticalLayout_3.setContentsMargins(0, 0, 0, 0)
@@ -111,6 +107,9 @@ class Ui_LabelWindow(object):
         self.horizontalLayout_3.setObjectName(u"horizontalLayout_3")
         self.lot2 = QLabel(self.verticalLayoutWidget)
         self.lot2.setObjectName(u"lot2")
+        font = QFont()
+        font.setPointSize(14)
+        self.lot2.setFont(font)
 
         self.horizontalLayout_3.addWidget(self.lot2)
 
@@ -190,21 +189,26 @@ class Ui_LabelWindow(object):
         self.resuls = QLabel(self.verticalLayoutWidget)
         self.resuls.setObjectName(u"resuls")
         self.resuls.setMinimumSize(QSize(0, 250))
+        font1 = QFont()
+        font1.setPointSize(12)
+        self.resuls.setFont(font1)
         self.resuls.setInputMethodHints(Qt.ImhMultiLine)
         self.resuls.setAlignment(Qt.AlignLeading|Qt.AlignLeft|Qt.AlignTop)
+        self.resuls.setWordWrap(True)
 
         self.verticalLayout_3.addWidget(self.resuls)
 
         self.frame = QWidget(LabelWindow)
         self.frame.setObjectName(u"frame")
-        self.frame.setGeometry(QRect(0, 0, 700, 350))
+        self.frame.setGeometry(QRect(0, 0, 812, 406))
         sizePolicy = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.frame.sizePolicy().hasHeightForWidth())
         self.frame.setSizePolicy(sizePolicy)
-        self.frame.setMinimumSize(QSize(700, 350))
-        self.frame.setMaximumSize(QSize(700, 350))
+        self.frame.setMinimumSize(QSize(812, 406))
+        self.frame.setMaximumSize(QSize(812, 406))
+        self.frame.setBaseSize(QSize(812, 406))
         palette2 = QPalette()
         palette2.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette2.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -262,14 +266,17 @@ class Ui_LabelWindow(object):
 #endif
         self.frame.setPalette(palette2)
         self.frame.setAutoFillBackground(True)
+        self.frame.setStyleSheet(u"QWidget{\n"
+"background-color:white\n"
+"border-width: 80px\n"
+"}")
         self.horizontalwidget = QHBoxLayout(self.frame)
         self.horizontalwidget.setObjectName(u"horizontalwidget")
-        self.horizontalwidget.setSizeConstraint(QLayout.SetFixedSize)
         self.horizontalwidget.setContentsMargins(-1, -1, 1, -1)
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setSizeConstraint(QLayout.SetFixedSize)
+        self.verticalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
@@ -408,8 +415,6 @@ class Ui_LabelWindow(object):
         palette4.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
 #endif
         self.batch_title.setPalette(palette4)
-        font = QFont()
-        font.setPointSize(14)
         self.batch_title.setFont(font)
         self.batch_title.setAutoFillBackground(True)
         self.batch_title.setFrameShape(QFrame.NoFrame)
@@ -422,17 +427,105 @@ class Ui_LabelWindow(object):
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 
         self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setSpacing(1)
+        self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setSizeConstraint(QLayout.SetFixedSize)
-        self.gridGroupBox_2 = QGroupBox(self.frame)
-        self.gridGroupBox_2.setObjectName(u"gridGroupBox_2")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(1)
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.gridLayout = QGridLayout()
+        self.gridLayout.setObjectName(u"gridLayout")
+        self.gridLayout.setHorizontalSpacing(0)
+        self.gridLayout.setVerticalSpacing(6)
+        self.label_8 = QLabel(self.frame)
+        self.label_8.setObjectName(u"label_8")
+
+        self.gridLayout.addWidget(self.label_8, 3, 0, 1, 1)
+
+        self.label_2 = QLabel(self.frame)
+        self.label_2.setObjectName(u"label_2")
+
+        self.gridLayout.addWidget(self.label_2, 1, 1, 1, 1)
+
+        self.conLabel = QLabel(self.frame)
+        self.conLabel.setObjectName(u"conLabel")
+        font2 = QFont()
+        font2.setPointSize(10)
+        self.conLabel.setFont(font2)
+        self.conLabel.setScaledContents(True)
+
+        self.gridLayout.addWidget(self.conLabel, 1, 0, 1, 1)
+
+        self.label_3 = QLabel(self.frame)
+        self.label_3.setObjectName(u"label_3")
+
+        self.gridLayout.addWidget(self.label_3, 0, 1, 1, 1)
+
+        self.emailLabel = QLabel(self.frame)
+        self.emailLabel.setObjectName(u"emailLabel")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
+        sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.gridGroupBox_2.sizePolicy().hasHeightForWidth())
-        self.gridGroupBox_2.setSizePolicy(sizePolicy1)
-        self.gridGroupBox_2.setMinimumSize(QSize(300, 0))
+        sizePolicy1.setHeightForWidth(self.emailLabel.sizePolicy().hasHeightForWidth())
+        self.emailLabel.setSizePolicy(sizePolicy1)
+        self.emailLabel.setFont(font2)
+        self.emailLabel.setScaledContents(False)
+        self.emailLabel.setWordWrap(True)
+
+        self.gridLayout.addWidget(self.emailLabel, 5, 1, 2, 1)
+
+        self.label_9 = QLabel(self.frame)
+        self.label_9.setObjectName(u"label_9")
+
+        self.gridLayout.addWidget(self.label_9, 3, 1, 1, 1)
+
+        self.dateLabel = QLabel(self.frame)
+        self.dateLabel.setObjectName(u"dateLabel")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.dateLabel.sizePolicy().hasHeightForWidth())
+        self.dateLabel.setSizePolicy(sizePolicy2)
+        self.dateLabel.setFont(font2)
+        self.dateLabel.setScaledContents(True)
+
+        self.gridLayout.addWidget(self.dateLabel, 4, 0, 1, 1)
+
+        self.deliveryLabel = QLabel(self.frame)
+        self.deliveryLabel.setObjectName(u"deliveryLabel")
+        self.deliveryLabel.setFont(font2)
+        self.deliveryLabel.setScaledContents(True)
+
+        self.gridLayout.addWidget(self.deliveryLabel, 5, 0, 1, 1)
+
+        self.label_6 = QLabel(self.frame)
+        self.label_6.setObjectName(u"label_6")
+
+        self.gridLayout.addWidget(self.label_6, 2, 0, 1, 1)
+
+        self.lotLabel = QLabel(self.frame)
+        self.lotLabel.setObjectName(u"lotLabel")
+        self.lotLabel.setFont(font2)
+        self.lotLabel.setScaledContents(False)
+
+        self.gridLayout.addWidget(self.lotLabel, 6, 0, 1, 1)
+
+        self.label_5 = QLabel(self.frame)
+        self.label_5.setObjectName(u"label_5")
+
+        self.gridLayout.addWidget(self.label_5, 6, 1, 1, 1)
+
+        self.label_7 = QLabel(self.frame)
+        self.label_7.setObjectName(u"label_7")
+
+        self.gridLayout.addWidget(self.label_7, 2, 1, 1, 1)
+
+        self.expLabel = QLabel(self.frame)
+        self.expLabel.setObjectName(u"expLabel")
+        self.expLabel.setFont(font2)
+        self.expLabel.setInputMethodHints(Qt.ImhDate)
+
+        self.gridLayout.addWidget(self.expLabel, 4, 1, 1, 1)
+
+        self.pHLabel = QLabel(self.frame)
+        self.pHLabel.setObjectName(u"pHLabel")
         palette5 = QPalette()
         palette5.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette5.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -488,94 +581,30 @@ class Ui_LabelWindow(object):
 #if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
         palette5.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
 #endif
-        self.gridGroupBox_2.setPalette(palette5)
-        self.gridGroupBox_2.setAutoFillBackground(True)
-        self.formLayout_2 = QFormLayout(self.gridGroupBox_2)
-        self.formLayout_2.setObjectName(u"formLayout_2")
-        self.formLayout_2.setSizeConstraint(QLayout.SetFixedSize)
-        self.formLayout_2.setRowWrapPolicy(QFormLayout.WrapLongRows)
-        self.formLayout_2.setHorizontalSpacing(35)
-        self.formLayout_2.setVerticalSpacing(0)
-        self.formLayout_2.setContentsMargins(0, 0, 0, 0)
-        self.pHLabel = QLabel(self.gridGroupBox_2)
-        self.pHLabel.setObjectName(u"pHLabel")
-        font1 = QFont()
-        font1.setPointSize(8)
-        self.pHLabel.setFont(font1)
+        self.pHLabel.setPalette(palette5)
+        self.pHLabel.setFont(font2)
         self.pHLabel.setAutoFillBackground(True)
         self.pHLabel.setScaledContents(True)
 
-        self.formLayout_2.setWidget(0, QFormLayout.LabelRole, self.pHLabel)
-
-        self.conLabel = QLabel(self.gridGroupBox_2)
-        self.conLabel.setObjectName(u"conLabel")
-        self.conLabel.setFont(font1)
-        self.conLabel.setScaledContents(True)
-
-        self.formLayout_2.setWidget(1, QFormLayout.LabelRole, self.conLabel)
-
-        self.dateLabel = QLabel(self.gridGroupBox_2)
-        self.dateLabel.setObjectName(u"dateLabel")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.dateLabel.sizePolicy().hasHeightForWidth())
-        self.dateLabel.setSizePolicy(sizePolicy2)
-        self.dateLabel.setFont(font1)
-        self.dateLabel.setScaledContents(True)
-
-        self.formLayout_2.setWidget(2, QFormLayout.LabelRole, self.dateLabel)
-
-        self.deliveryLabel = QLabel(self.gridGroupBox_2)
-        self.deliveryLabel.setObjectName(u"deliveryLabel")
-        self.deliveryLabel.setFont(font1)
-        self.deliveryLabel.setScaledContents(True)
-
-        self.formLayout_2.setWidget(3, QFormLayout.LabelRole, self.deliveryLabel)
-
-        self.emailLabel = QLabel(self.gridGroupBox_2)
-        self.emailLabel.setObjectName(u"emailLabel")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Preferred)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.emailLabel.sizePolicy().hasHeightForWidth())
-        self.emailLabel.setSizePolicy(sizePolicy3)
-        self.emailLabel.setFont(font1)
-        self.emailLabel.setScaledContents(False)
-        self.emailLabel.setWordWrap(True)
-
-        self.formLayout_2.setWidget(3, QFormLayout.FieldRole, self.emailLabel)
-
-        self.expLabel = QLabel(self.gridGroupBox_2)
-        self.expLabel.setObjectName(u"expLabel")
-        self.expLabel.setInputMethodHints(Qt.ImhDate)
-
-        self.formLayout_2.setWidget(2, QFormLayout.FieldRole, self.expLabel)
-
-        self.lotLabel = QLabel(self.gridGroupBox_2)
-        self.lotLabel.setObjectName(u"lotLabel")
-        self.lotLabel.setFont(font1)
-        self.lotLabel.setScaledContents(False)
-
-        self.formLayout_2.setWidget(4, QFormLayout.LabelRole, self.lotLabel)
+        self.gridLayout.addWidget(self.pHLabel, 0, 0, 1, 1)
 
 
-        self.horizontalLayout_2.addWidget(self.gridGroupBox_2)
+        self.horizontalLayout_2.addLayout(self.gridLayout)
 
         self.qrLabel = QLabel(self.frame)
         self.qrLabel.setObjectName(u"qrLabel")
-        sizePolicy.setHeightForWidth(self.qrLabel.sizePolicy().hasHeightForWidth())
-        self.qrLabel.setSizePolicy(sizePolicy)
-        self.qrLabel.setMinimumSize(QSize(100, 100))
-        self.qrLabel.setMaximumSize(QSize(100, 100))
+        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.qrLabel.sizePolicy().hasHeightForWidth())
+        self.qrLabel.setSizePolicy(sizePolicy3)
+        self.qrLabel.setMinimumSize(QSize(0, 0))
+        self.qrLabel.setMaximumSize(QSize(150, 150))
+        self.qrLabel.setSizeIncrement(QSize(1, 1))
         self.qrLabel.setAutoFillBackground(True)
         self.qrLabel.setScaledContents(True)
 
         self.horizontalLayout_2.addWidget(self.qrLabel)
-
-        self.horizontalSpacer = QSpacerItem(20, 20, QSizePolicy.MinimumExpanding, QSizePolicy.Minimum)
-
-        self.horizontalLayout_2.addItem(self.horizontalSpacer)
 
 
         self.verticalLayout_2.addLayout(self.horizontalLayout_2)
@@ -583,17 +612,19 @@ class Ui_LabelWindow(object):
 
         self.horizontalwidget.addLayout(self.verticalLayout_2)
 
-        self.verticalLayout = QVBoxLayout()
-        self.verticalLayout.setSpacing(0)
-        self.verticalLayout.setObjectName(u"verticalLayout")
-        self.verticalLayout.setSizeConstraint(QLayout.SetFixedSize)
+        self.frame_3 = QFrame(self.frame)
+        self.frame_3.setObjectName(u"frame_3")
+        self.frame_3.setFrameShape(QFrame.StyledPanel)
+        self.frame_3.setFrameShadow(QFrame.Raised)
+
+        self.horizontalwidget.addWidget(self.frame_3)
+
         self.formLayout = QFormLayout()
         self.formLayout.setObjectName(u"formLayout")
-        self.formLayout.setSizeConstraint(QLayout.SetFixedSize)
         self.formLayout.setFieldGrowthPolicy(QFormLayout.FieldsStayAtSizeHint)
-        self.formLayout.setHorizontalSpacing(0)
-        self.formLayout.setVerticalSpacing(0)
-        self.formLayout.setContentsMargins(-1, -1, 0, -1)
+        self.formLayout.setHorizontalSpacing(19)
+        self.formLayout.setVerticalSpacing(18)
+        self.formLayout.setContentsMargins(6, 10, 13, -1)
         self.corr = QLabel(self.frame)
         self.corr.setObjectName(u"corr")
         sizePolicy.setHeightForWidth(self.corr.sizePolicy().hasHeightForWidth())
@@ -711,6 +742,9 @@ class Ui_LabelWindow(object):
         palette6.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush5)
 #endif
         self.non.setPalette(palette6)
+        font3 = QFont()
+        font3.setPointSize(9)
+        self.non.setFont(font3)
         self.non.setAutoFillBackground(True)
         self.non.setPixmap(QPixmap(u":/newPrefix/Non haz.png"))
         self.non.setScaledContents(True)
@@ -721,18 +755,45 @@ class Ui_LabelWindow(object):
         self.hhmIcon.setObjectName(u"hhmIcon")
         sizePolicy.setHeightForWidth(self.hhmIcon.sizePolicy().hasHeightForWidth())
         self.hhmIcon.setSizePolicy(sizePolicy)
+        self.hhmIcon.setFont(font3)
         self.hhmIcon.setPixmap(QPixmap(u":/newPrefix/HHM.png"))
         self.hhmIcon.setScaledContents(True)
 
         self.formLayout.setWidget(3, QFormLayout.FieldRole, self.hhmIcon)
 
 
-        self.verticalLayout.addLayout(self.formLayout)
+        self.horizontalwidget.addLayout(self.formLayout)
 
-
-        self.horizontalwidget.addLayout(self.verticalLayout)
-
-        self.horizontalwidget.setStretch(0, 1)
+        self.buttonBox = QDialogButtonBox(LabelWindow)
+        self.buttonBox.setObjectName(u"buttonBox")
+        self.buttonBox.setGeometry(QRect(460, 390, 371, 61))
+        self.buttonBox.setStyleSheet(u"QPushButton {\n"
+"    border: 2px solid #8f8f91;\n"
+"    border-radius: 6px;\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #f6f7fa, stop: 1 #dadbde);\n"
+"    min-width: 80px;\n"
+"}\n"
+"\n"
+"QPushButton:pressed {\n"
+"    background-color: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                      stop: 0 #dadbde, stop: 1 #f6f7fa);\n"
+"}\n"
+"\n"
+"QPushButton:flat {\n"
+"    border: none; /* no border for a flat push button */\n"
+"}\n"
+"\n"
+"QPushButton:default {\n"
+"    border-color: navy; /* make the default button prominent */\n"
+"}")
+        self.buttonBox.setOrientation(Qt.Horizontal)
+        self.buttonBox.setStandardButtons(QDialogButtonBox.Cancel|QDialogButtonBox.Ok)
+        self.frame_2 = QFrame(LabelWindow)
+        self.frame_2.setObjectName(u"frame_2")
+        self.frame_2.setGeometry(QRect(840, 130, 120, 80))
+        self.frame_2.setFrameShape(QFrame.StyledPanel)
+        self.frame_2.setFrameShadow(QFrame.Raised)
 
         self.retranslateUi(LabelWindow)
         self.buttonBox.rejected.connect(LabelWindow.reject)
@@ -743,18 +804,24 @@ class Ui_LabelWindow(object):
     def retranslateUi(self, LabelWindow):
         LabelWindow.setWindowTitle(QCoreApplication.translate("LabelWindow", u"Dialog", None))
         self.lot2.setText(QCoreApplication.translate("LabelWindow", u"TextLabel", None))
-        self.label_4.setText(QCoreApplication.translate("LabelWindow", u"TextLabel", None))
+        self.label_4.setText(QCoreApplication.translate("LabelWindow", u"Page 2 of 2", None))
         self.resuls.setText(QCoreApplication.translate("LabelWindow", u"TextLabel", None))
         self.label.setText("")
         self.batch_title.setText(QCoreApplication.translate("LabelWindow", u"ABM 472 - ", None))
-        self.gridGroupBox_2.setTitle("")
-        self.pHLabel.setText(QCoreApplication.translate("LabelWindow", u"pH 4.76 @ 23.6 C ", None))
+        self.label_8.setText("")
+        self.label_2.setText("")
         self.conLabel.setText(QCoreApplication.translate("LabelWindow", u"Conductivity: 14.5mS./m @ 24,5", None))
+        self.label_3.setText("")
+        self.emailLabel.setText(QCoreApplication.translate("LabelWindow", u"Email:ccmedders@amgen.com", None))
+        self.label_9.setText("")
         self.dateLabel.setText(QCoreApplication.translate("LabelWindow", u"Date: 05-31-27", None))
         self.deliveryLabel.setText(QCoreApplication.translate("LabelWindow", u"5th floor cold room", None))
-        self.emailLabel.setText(QCoreApplication.translate("LabelWindow", u"Email:ccmedders@amgen.com", None))
-        self.expLabel.setText(QCoreApplication.translate("LabelWindow", u"Exp: 05-31-25", None))
+        self.label_6.setText("")
         self.lotLabel.setText(QCoreApplication.translate("LabelWindow", u"Lot: A21739414", None))
+        self.label_5.setText("")
+        self.label_7.setText("")
+        self.expLabel.setText(QCoreApplication.translate("LabelWindow", u"Exp: 05-31-25", None))
+        self.pHLabel.setText(QCoreApplication.translate("LabelWindow", u"pH 4.76 @ 23.6 C ", None))
         self.qrLabel.setText(QCoreApplication.translate("LabelWindow", u"TextLabel", None))
         self.corr.setText("")
         self.resp.setText("")

@@ -4,6 +4,7 @@ from PySide2.QtCore import *
 from PySide2.QtGui import * 
 from PySide2.QtPrintSupport import QPrintDialog, QPrinter
 from PySide2.QtWidgets import QDialog
+from qrcode.constants import ERROR_CORRECT_H
 from LaelDialog import Ui_LabelWindow
 import zpl
 import io
@@ -85,7 +86,12 @@ class Label(QDialog, Ui_LabelWindow):
         self.resuls.setText(giffy)
     def createBarcode(self, batch, email, lot):
         codeStr = batch + "*" + email + "*" + lot
-        img = qrcode.make(codeStr)
+        qrCode = qrcode.QRCode(
+            error_correction=ERROR_CORRECT_H,
+        )
+        qrCode.add_data(codeStr)
+        qrCode.make()
+        img = qrCode.make_image()
         return img
     def pil2pixmap(self, image):
         bytes_img = io.BytesIO()
@@ -100,10 +106,17 @@ class Label(QDialog, Ui_LabelWindow):
         sshot2 = QWidget.grab(self.frame2)
         sshot.save('sshot.png')
         sshot2.save('sshot2.png')
+        
 
         #Instantiate print image object
         sshot = sshot.toImage()
+        sshot.allGray()
+        sshot.setDotsPerMeterX(7992)
+        sshot.setDotsPerMeterY(7992)
+        sshot.save('2sshot.png')
         sshot2 = sshot2.toImage()
+        sshot2.setDotsPerMeterX(7992)
+        sshot2.setDotsPerMeterY(7992)
         screenshots = [sshot, sshot2]
         printer=QPrinter(QPrinter.HighResolution)
         paperSize = QPageSize(QSizeF(4.05, 2.05), QPageSize.Inch)

@@ -2,7 +2,7 @@
  True,
  False,
  True,
- 'c:\\users\\cmedders\\documents\\pythonapp\\env\\lib\\site-packages\\PyInstaller\\bootloader\\images\\icon-console.ico',
+ 'ico2.ico',
  None,
  False,
  False,
@@ -40,7 +40,7 @@
  [],
  False,
  False,
- 1616099891,
+ 1616164097,
  [('run.exe',
    'c:\\users\\cmedders\\documents\\pythonapp\\env\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run.exe',
    'EXECUTABLE')])
