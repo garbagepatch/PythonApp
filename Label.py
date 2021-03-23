@@ -220,6 +220,8 @@ class Label(QDialog, Ui_LabelWindow):
             self.haz.setPixmap(self.hazPix)
         if self.isFlam is False  and self.isHHM is False  and self.isTox is False and self.isHaz is False and self.isResp is False and self.isCorr is False and self.isEnv is False:
             self.non.setPixmap(self.nonPix)
+
+            
  
  
  

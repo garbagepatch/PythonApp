@@ -1,6 +1,6 @@
 from PySide2 import QtSql, QtGui
 import sqlite3
-
+import re
 from PySide2.QtCore import QFile
 
 def createConnection():
@@ -100,19 +100,20 @@ def createHHMList(con):
     return chemicals
 def checkIfResult(con, results):
     cur = con.cursor()
-    j =0
+    cur.execute("SELECT OldName, CorrectSpelling From Replacements")
+    tabdict = {}
+    for (OldName, CorrectSpelling) in cur:
+        tabdict[OldName] = CorrectSpelling
+
     reslist= results.split(", ")
-    for i in reslist:
-        j += 1        
-        cur.execute("SELECT CorrectSpelling FROM Replacements Where OldName=?", (i,))
-        result = cur.fetchone()
-        if result:
-            a = result
-            (chemical, ) = a
-            
-            reslist[j-1] = chemical
+    reslist = [tabdict.get(item, item) for item in reslist]
+    
     
     return ", ".join(reslist)
+def remove(list):
+    pattern = '[0-9]'
+    list = [re.sub(pattern, '', i) for i in list]
+    return list
         
         
 
