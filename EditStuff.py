@@ -29,8 +29,8 @@ class ReplacementModel(QSqlTableModel):
         self.setTable(myName)
         self.setEditStrategy(QSqlTableModel.OnFieldChange)
         self.select()
-        self.setHeaderData(0, Qt.Horizontal, "id")
-        self.setHeaderData(1, Qt.Horizontal, "OldName")
+        self.setHeaderData(0, Qt.Horizontal, "Old Name")
+        self.setHeaderData(1, Qt.Horizontal, "Corrected Name")
         self.setHeaderData(2, Qt.Horizontal, "CorrectSpelling" )
 class EditStuff(QDialog, Ui_HazardTable):
     def __init__(self,  parent= None):

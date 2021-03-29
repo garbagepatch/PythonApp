@@ -48,11 +48,6 @@ class Ui_MainWindow(object):
         brush6.setStyle(Qt.SolidPattern)
         palette.setBrush(QPalette.Active, QPalette.ToolTipBase, brush6)
         palette.setBrush(QPalette.Active, QPalette.ToolTipText, brush)
-        brush7 = QBrush(QColor(0, 0, 0, 128))
-        brush7.setStyle(Qt.SolidPattern)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Active, QPalette.PlaceholderText, brush7)
-#endif
         palette.setBrush(QPalette.Inactive, QPalette.WindowText, brush)
         palette.setBrush(QPalette.Inactive, QPalette.Button, brush1)
         palette.setBrush(QPalette.Inactive, QPalette.Light, brush2)
@@ -68,9 +63,6 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Inactive, QPalette.AlternateBase, brush3)
         palette.setBrush(QPalette.Inactive, QPalette.ToolTipBase, brush6)
         palette.setBrush(QPalette.Inactive, QPalette.ToolTipText, brush)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Inactive, QPalette.PlaceholderText, brush7)
-#endif
         palette.setBrush(QPalette.Disabled, QPalette.WindowText, brush4)
         palette.setBrush(QPalette.Disabled, QPalette.Button, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.Light, brush2)
@@ -86,16 +78,13 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.AlternateBase, brush1)
         palette.setBrush(QPalette.Disabled, QPalette.ToolTipBase, brush6)
         palette.setBrush(QPalette.Disabled, QPalette.ToolTipText, brush)
-#if QT_VERSION >= QT_VERSION_CHECK(5, 12, 0)
-        palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush7)
-#endif
         MainWindow.setPalette(palette)
         MainWindow.setAutoFillBackground(True)
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(20, 20, 771, 521))
+        self.horizontalLayoutWidget.setGeometry(QRect(20, 20, 771, 554))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
@@ -257,6 +246,11 @@ class Ui_MainWindow(object):
 
         self.verticalLayout_2.addWidget(self.textEdit)
 
+        self.openGLWidget = QOpenGLWidget(self.horizontalLayoutWidget)
+        self.openGLWidget.setObjectName(u"openGLWidget")
+
+        self.verticalLayout_2.addWidget(self.openGLWidget)
+
         self.pushButton = QPushButton(self.horizontalLayoutWidget)
         self.pushButton.setObjectName(u"pushButton")
 
@@ -268,7 +262,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 824, 26))
+        self.menubar.setGeometry(QRect(0, 0, 824, 27))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")

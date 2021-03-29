@@ -3,7 +3,7 @@
 from PySide2.QtCore import *
 from PySide2.QtGui import * 
 from PySide2.QtPrintSupport import QPrintDialog, QPrinter
-from PySide2.QtWidgets import QDialog
+from PySide2.QtWidgets import QDialog, QMessageBox
 from qrcode.constants import ERROR_CORRECT_H
 from LaelDialog import Ui_LabelWindow
 import zpl
@@ -63,12 +63,19 @@ class Label(QDialog, Ui_LabelWindow):
         self.deliveryLabel.setText("Drop Zone: " + listInfo [3])
         self.expLabel.setText("Exp: "+listInfo[4])
         self.dialog = None
-        if self.isMedia:
-            self.conLabel.setText("pCO2: " + listInfo[7]+ "mmHg/ Osmolality: "+ listInfo[8] + "mOsm/kg" )
-        else:
-            self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
-        self.pHLabel.setText("pH: " + listInfo[5]+" @ "+listInfo[6] + "C")
-       
+        try:
+            if self.isMedia:
+        
+                self.conLabel.setText("pCO2: " + listInfo[7]+ "mmHg/ Osmolality: "+ listInfo[8] + "mOsm/kg" )
+    
+            else:
+                self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
+        except:
+            self.conLabel.setText("")
+        try:
+            self.pHLabel.setText("pH: " + listInfo[5]+" @ "+listInfo[6] + "C")
+        except:
+            self.pHLabel.setText("")
        
         self.printer = None
         self.buttonBox.accepted.connect(self.print_preview_dialog)
@@ -82,8 +89,12 @@ class Label(QDialog, Ui_LabelWindow):
         reslist = results.split(",")
         reslist = [changeDict.get(item, item) for item in reslist]
         self.results = ", ".join(reslist)"""
-        giffy = checkIfResult(self.connection, results)
-        self.resuls.setText(giffy)
+        try:
+            giffy = checkIfResult(self.connection, results)
+            self.resuls.setText(giffy)
+        except:
+            msgbox = QMessageBox.warning(self,"Warning Box", " Have you tried adding ingredients?" )
+            msgbox.show()
     def createBarcode(self, batch, email, lot):
         codeStr = batch + "*" + email + "*" + lot
         qrCode = qrcode.QRCode(

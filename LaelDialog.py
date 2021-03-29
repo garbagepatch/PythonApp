@@ -597,10 +597,7 @@ class Ui_LabelWindow(object):
 
         self.gridLayout.addWidget(self.emailLabel, 5, 2, 2, 1)
 
-        self.label_5 = QLabel(self.frame)
-        self.label_5.setObjectName(u"label_5")
-
-        self.gridLayout.addWidget(self.label_5, 6, 2, 1, 1)
+        
 
 
         self.horizontalLayout_2.addLayout(self.gridLayout)
@@ -823,7 +820,7 @@ class Ui_LabelWindow(object):
         self.label_7.setText("")
         self.conLabel.setText(QCoreApplication.translate("LabelWindow", u"Conductivity: 14.5mS./m @ 24,5", None))
         self.emailLabel.setText(QCoreApplication.translate("LabelWindow", u"Email:ccmedders@amgen.com", None))
-        self.label_5.setText("")
+  
         self.qrLabel.setText(QCoreApplication.translate("LabelWindow", u"TextLabel", None))
         self.corr.setText("")
         self.resp.setText("")

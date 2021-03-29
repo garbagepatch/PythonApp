@@ -107,9 +107,9 @@ def checkIfResult(con, results):
 
     reslist= results.split(", ")
     reslist = [tabdict.get(item, item) for item in reslist]
+    resstr = ", ".join(reslist)
     
-    
-    return ", ".join(reslist)
+    return resstr
 def remove(list):
     pattern = '[0-9]'
     list = [re.sub(pattern, '', i) for i in list]
