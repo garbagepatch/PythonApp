@@ -184,13 +184,14 @@ class Label(QDialog, Ui_LabelWindow):
     def checkShit(self, batch, pH):
         try:
             fpH = float(pH)
+
             if fpH <= 5.5 or fpH >= 10.5:
                 self.isCorr = True
                 img = QImage("corrosive.png")
                 corrpix = QPixmap(img)
                 self.corr.setPixmap(corrpix)
         except:
-            self.pHLabel.setVisible(False)
+            self.pHLabel.setText("")
 
         corrosive_list = createCorrosiveList(self.connection)
         flam_list = createFlammableList(self.connection) 

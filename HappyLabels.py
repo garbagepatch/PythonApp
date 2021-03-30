@@ -54,7 +54,6 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         self.w.addItem(self.m1)
 
         self.pushButton.clicked.connect(self.OpenLabels)
-        self.pushButton.clicked.connect(self.OpenLabels)
         self.comboBox.currentTextChanged.connect(self.SetLabels)
         self.setWindowTitle("Sup")
         self.pH = 0
