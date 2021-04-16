@@ -133,7 +133,7 @@ class Label(QDialog, Ui_LabelWindow):
         sshot2.setDotsPerMeterY(7992)
         screenshots = [sshot, sshot2]
         printer=QPrinter(QPrinter.HighResolution)
-        paperSize = QPageSize(QSizeF(4.05, 2.05), QPageSize.Inch)
+        paperSize = QPageSize(QSizeF(4.00, 2.00), QPageSize.Inch)
         printer.setPageSize(paperSize)
         #Print window pops up
         
