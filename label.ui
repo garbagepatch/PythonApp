@@ -2469,7 +2469,7 @@ border: 8px black;
         </property>
         <property name="font">
          <font>
-          <pointsize>14</pointsize>
+          <pointsize>16</pointsize>
          </font>
         </property>
         <property name="autoFillBackground">
@@ -2531,7 +2531,7 @@ border-width: 5px;
            <widget class="QLabel" name="deliveryLabel">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -2546,7 +2546,7 @@ border-width: 5px;
            <widget class="QLabel" name="expLabel">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="inputMethodHints">
@@ -2568,7 +2568,7 @@ border-width: 5px;
            <widget class="QLabel" name="lotLabel">
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -2596,7 +2596,7 @@ border-width: 5px;
             </property>
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="text">
@@ -3084,7 +3084,8 @@ border-width: 5px;
             </property>
             <property name="font">
              <font>
-              <pointsize>10</pointsize>
+              <family>MS Sans Serif</family>
+              <pointsize>12</pointsize>
              </font>
             </property>
             <property name="autoFillBackground">
@@ -3900,6 +3901,7 @@ QPushButton:default {
   </widget>
  </widget>
  <resources>
+  <include location="Resourcing.qrc"/>
   <include location="Resourcing.qrc"/>
   <include location="Resourcing.qrc"/>
   <include location="../../.designer/backup/Resourcing.qrc"/>

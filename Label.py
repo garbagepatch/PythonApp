@@ -68,7 +68,7 @@ class Label(QDialog, Ui_LabelWindow):
         
                 self.conLabel.setText("pCO2: " + listInfo[7]+ "mmHg/ Osmolality: "+ listInfo[8] + "mOsm/kg" )
     
-            else:
+            elif self.isMedia == False:
                 self.conLabel.setText("Conductivity: " + listInfo[7]+"mS/cm @ " + listInfo[8]+ "C")
         except:
             self.conLabel.setText("")
@@ -117,13 +117,16 @@ class Label(QDialog, Ui_LabelWindow):
         sshot2 = QWidget.grab(self.frame2)
         sshot.save('sshot.png')
         sshot2.save('sshot2.png')
+
         
 
         #Instantiate print image object
         sshot = sshot.toImage()
         sshot.allGray()
         sshot.setDotsPerMeterX(7992)
+        sshot.scaledToHeight(3*sshot.height())
         sshot.setDotsPerMeterY(7992)
+        sshot.scaledToWidth(3*sshot.width())
         sshot.save('2sshot.png')
         sshot2 = sshot2.toImage()
         sshot2.setDotsPerMeterX(7992)
@@ -192,6 +195,8 @@ class Label(QDialog, Ui_LabelWindow):
                 self.corr.setPixmap(corrpix)
         except:
             self.pHLabel.setVisible(False)
+        if self.listInfo[7] == "":
+            self.conLabel.setVisible(False)
 
         corrosive_list = createCorrosiveList(self.connection)
         flam_list = createFlammableList(self.connection) 

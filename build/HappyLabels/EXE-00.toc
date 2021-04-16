@@ -2,7 +2,7 @@
  True,
  True,
  True,
- 'disico.ico',
+ 'iso255.ico',
  None,
  False,
  False,
@@ -43,7 +43,7 @@
  [],
  False,
  False,
- 1617039300,
+ 1618603312,
  [('run_d.exe',
    'c:\\users\\cmedders\\pyhton39\\lib\\site-packages\\PyInstaller\\bootloader\\Windows-64bit\\run_d.exe',
    'EXECUTABLE')])
