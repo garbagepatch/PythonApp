@@ -109,7 +109,22 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         editAction.triggered.connect(self.editStuff)
         fileMenu.addAction(exitAction)
         editMenu.addAction(editAction)
- 
+    def reset(self):
+        self.pHLineEdit.clear()
+        
+        self.conductivityLineEdit.clear()
+        self.batchTitleLineEdit.clear()
+       
+        self.pHLineEdit.clear()
+        self.conductivityTemperatureLineEdit.clear()
+        self.emailLineEdit.clear()
+        self.lotNumberLineEdit.clear()
+        
+        self.expdate = date.today()
+        self.listInfo = []
+        self.label = None
+        self.editthing = None
+
     def exit_app(self):
         self.close()
     def editStuff(self):
@@ -133,6 +148,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
             self.listInfo = [self.batchTitleLineEdit.text(),self.emailLineEdit.text(), self.lotNumberLineEdit.text(),  self.deliveryZoneComboBox.currentText(), self.expirationDateDateTimeEdit.date().toString("yyyy-MM-dd"), self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLineEdit.text(), self.conductivityTemperatureLineEdit.text() ]    
             self.label = Label(self.listInfo, self.textEdit.toPlainText(), self.isMedia )
             self.label.show()
+            
             
         except Exception as e: 
             print(e)

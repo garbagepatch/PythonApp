@@ -94,7 +94,7 @@ class Label(QDialog, Ui_LabelWindow):
             self.resuls.setText(giffy)
         except:
             msgbox = QMessageBox.warning(self,"Warning Box", " Have you tried adding ingredients?" )
-            msgbox.show()
+           
     def createBarcode(self, batch, email, lot):
         codeStr = batch + "*" + email + "*" + lot
         qrCode = qrcode.QRCode(
