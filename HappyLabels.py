@@ -4,7 +4,7 @@ from Label import Label
 from PySide2 import QtWidgets, QtCore, QtGui
 """import pyqtgraph.opengl as gl"""
 from PySide2.QtGui import QIcon, QImage, QPixmap
-from PySide2.QtWidgets import  QMainWindow, QAction
+from PySide2.QtWidgets import  QMainWindow, QAction, QMessageBox
 from EditStuff import EditStuff
 from datetime import date
 import numpy as np
@@ -16,11 +16,12 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         super(HappyLabels, self).__init__()
         self.setupUi(self)
         sys.stdout = self
-    
+       
         self.pushButton.clicked.connect(self.OpenLabels)
         self.comboBox.currentTextChanged.connect(self.SetLabels)
         self.setWindowTitle("Sup")
         self.pH = 0
+      
         self.isMedia = False
         self.cond = 0
         self.batchTitle = "Batch"
@@ -30,7 +31,8 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         self.email = "email@email.com"
         self.lotnumber = "A20111111"
         self.date = date.today()
-        self.expdate = date.today()
+        self.expdate= (date.today())
+        self.expirationDateDateTimeEdit.setDate(date.today())
         self.listInfo = []
         self.label = None
         self.editthing = None
@@ -111,15 +113,15 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         editMenu.addAction(editAction)
     def reset(self):
         self.pHLineEdit.clear()
-        
+        self.listInfo.clear()
         self.conductivityLineEdit.clear()
         self.batchTitleLineEdit.clear()
-       
+        self.textEdit.clear()
         self.pHLineEdit.clear()
         self.conductivityTemperatureLineEdit.clear()
         self.emailLineEdit.clear()
         self.lotNumberLineEdit.clear()
-        
+        self.expirationDateDateTimeEdit.setDate(date.today())
         self.expdate = date.today()
         self.listInfo = []
         self.label = None
@@ -145,9 +147,25 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
             self.isMedia = False
     def OpenLabels(self):
         try: 
-            self.listInfo = [self.batchTitleLineEdit.text(),self.emailLineEdit.text(), self.lotNumberLineEdit.text(),  self.deliveryZoneComboBox.currentText(), self.expirationDateDateTimeEdit.date().toString("yyyy-MM-dd"), self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLineEdit.text(), self.conductivityTemperatureLineEdit.text() ]    
-            self.label = Label(self.listInfo, self.textEdit.toPlainText(), self.isMedia )
-            self.label.show()
+            if(self.expirationDateDateTimeEdit.date() == date.today()):
+                msg = QMessageBox()
+                msg.setIcon(QMessageBox.Warning)
+                msg.setText("You didnt update the Due Date, you should do that, if it is actually due same day ... well this will be a problem")
+                msg.setWindowTitle("EXP DATE WARNING")
+                msg.setStandardButtons(QMessageBox.Ok )
+                msg.exec_()
+     
+           
+            
+            else:
+                self.listInfo = [self.batchTitleLineEdit.text(),self.emailLineEdit.text(), self.lotNumberLineEdit.text(),  self.deliveryZoneComboBox.currentText(), self.expirationDateDateTimeEdit.date().toString("yyyy-MM-dd"), self.pHLineEdit.text(), self.pHTemperatureLineEdit.text(), self.conductivityLineEdit.text(), self.conductivityTemperatureLineEdit.text() ]    
+                self.label = Label(self.listInfo, self.textEdit.toPlainText(), self.isMedia )
+                returnvalue = self.label.exec_()
+                if returnvalue == self.label.buttonBox.Cancel:
+                    self.reset()
+                else: 
+                    self.reset()
+             
             
             
         except Exception as e: 

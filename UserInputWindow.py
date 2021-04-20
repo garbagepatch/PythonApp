@@ -18,7 +18,7 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
-        MainWindow.resize(1064, 595)
+        MainWindow.resize(1083, 595)
         palette = QPalette()
         brush = QBrush(QColor(0, 0, 0, 255))
         brush.setStyle(Qt.SolidPattern)
@@ -97,7 +97,7 @@ class Ui_MainWindow(object):
         palette.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush10)
 #endif
         MainWindow.setPalette(palette)
-        MainWindow.setAutoFillBackground(True)
+        MainWindow.setAutoFillBackground(False)
         MainWindow.setStyleSheet(u"")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
@@ -111,12 +111,15 @@ class Ui_MainWindow(object):
         self.centralwidget.setStyleSheet(u"")
         self.horizontalLayoutWidget = QWidget(self.centralwidget)
         self.horizontalLayoutWidget.setObjectName(u"horizontalLayoutWidget")
-        self.horizontalLayoutWidget.setGeometry(QRect(0, 0, 1061, 535))
+        self.horizontalLayoutWidget.setGeometry(QRect(0, 0, 1061, 538))
         self.horizontalLayout = QHBoxLayout(self.horizontalLayoutWidget)
+        self.horizontalLayout.setSpacing(7)
+        self.horizontalLayout.setContentsMargins(11, 11, 11, 11)
         self.horizontalLayout.setObjectName(u"horizontalLayout")
         self.horizontalLayout.setSizeConstraint(QLayout.SetDefaultConstraint)
         self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.formLayout_2 = QFormLayout()
+        self.formLayout_2.setSpacing(7)
         self.formLayout_2.setObjectName(u"formLayout_2")
         self.formLayout_2.setSizeConstraint(QLayout.SetFixedSize)
         self.formLayout_2.setHorizontalSpacing(8)
@@ -337,6 +340,7 @@ class Ui_MainWindow(object):
         palette3.setBrush(QPalette.Disabled, QPalette.PlaceholderText, brush25)
 #endif
         self.batchTitleLineEdit.setPalette(palette3)
+        self.batchTitleLineEdit.setFont(font1)
         self.batchTitleLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -360,6 +364,7 @@ class Ui_MainWindow(object):
 
         self.emailLineEdit = QLineEdit(self.horizontalLayoutWidget)
         self.emailLineEdit.setObjectName(u"emailLineEdit")
+        self.emailLineEdit.setFont(font1)
         self.emailLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -397,6 +402,7 @@ class Ui_MainWindow(object):
         palette4.setBrush(QPalette.Disabled, QPalette.Window, brush21)
         palette4.setBrush(QPalette.Disabled, QPalette.Highlight, brush22)
         self.lotNumberLineEdit.setPalette(palette4)
+        self.lotNumberLineEdit.setFont(font1)
         self.lotNumberLineEdit.setStyleSheet(u"QLineEdit {\n"
 "    border: 2px solid gray;\n"
 "    border-radius: 10px;\n"
@@ -486,6 +492,7 @@ class Ui_MainWindow(object):
 
         self.pHLineEdit = QLineEdit(self.horizontalLayoutWidget)
         self.pHLineEdit.setObjectName(u"pHLineEdit")
+        self.pHLineEdit.setFont(font1)
         self.pHLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -509,6 +516,7 @@ class Ui_MainWindow(object):
 
         self.pHTemperatureLineEdit = QLineEdit(self.horizontalLayoutWidget)
         self.pHTemperatureLineEdit.setObjectName(u"pHTemperatureLineEdit")
+        self.pHTemperatureLineEdit.setFont(font1)
         self.pHTemperatureLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -532,6 +540,7 @@ class Ui_MainWindow(object):
 
         self.conductivityLineEdit = QLineEdit(self.horizontalLayoutWidget)
         self.conductivityLineEdit.setObjectName(u"conductivityLineEdit")
+        self.conductivityLineEdit.setFont(font1)
         self.conductivityLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -555,6 +564,7 @@ class Ui_MainWindow(object):
 
         self.conductivityTemperatureLineEdit = QLineEdit(self.horizontalLayoutWidget)
         self.conductivityTemperatureLineEdit.setObjectName(u"conductivityTemperatureLineEdit")
+        self.conductivityTemperatureLineEdit.setFont(font1)
         self.conductivityTemperatureLineEdit.setStyleSheet(u"QLineEdit {\n"
 "color:  black;\n"
 "    border: 2px solid gray;\n"
@@ -612,7 +622,7 @@ class Ui_MainWindow(object):
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1064, 26))
+        self.menubar.setGeometry(QRect(0, 0, 1083, 26))
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QStatusBar(MainWindow)
         self.statusbar.setObjectName(u"statusbar")

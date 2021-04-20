@@ -158,6 +158,7 @@ class Label(QDialog, Ui_LabelWindow):
                 painter.drawImage(0,0,shot)
                 painter.end()
                 painter
+            
               
        
     def zebraPrint(self):
