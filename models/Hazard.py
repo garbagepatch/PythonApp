@@ -8,13 +8,13 @@ class ChemicalHazards(Base):
    __tablename__="ChemicalHazards"
    id=Column(Integer, primary_key=True, autoincrement=True)
    Chemical = Column(String)
-   Corrosive= Column(BOOLEAN, default=False)
-   Flammable= Column(BOOLEAN, default=False)
-   Hazardous= Column(BOOLEAN, default=False)
-   Environment= Column(BOOLEAN, default=False)
-   Respiratory= Column(BOOLEAN, default=False)
-   Toxic= Column(BOOLEAN, default=False)
-   HHM= Column(BOOLEAN, default=False)
+   Corrosive= Column(String, default="FALSE")
+   Flammable= Column(String, default="FALSE")
+   Hazardous= Column(String, default="FALSE")
+   Environment= Column(String, default="FALSE")
+   Respiratory= Column(String, default="FALSE")
+   Toxic= Column(String, default="FALSE")
+   HHM= Column(String, default="FALSE")
 
    def __init__(self, Chemical, Corrosive, Flammable, Hazardous, Environment, Respiratory, Toxic, HHM):
           self.Chemical = Chemical

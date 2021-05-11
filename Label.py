@@ -1,5 +1,7 @@
 
 
+from re import split
+from typing import Text
 from PySide2.QtCore import *
 from PySide2.QtGui import * 
 from PySide2.QtPrintSupport import QPrintDialog, QPrinter
@@ -82,8 +84,9 @@ class Label(QDialog, Ui_LabelWindow):
         img = self.createBarcode( listInfo[1], listInfo[0],listInfo[2])
         self.qrLabel.setPixmap(self.pil2pixmap(img))
         self.qrLabel.setScaledContents(True)
-        self.checkShit(listInfo[0], listInfo[5])
         self.doTheChemicals(self.results)
+        self.checkShit(listInfo[0], listInfo[5])
+        
     def doTheChemicals(self, results):
         """changeDict ={"NaOH": "Sodium Hydroxide", "NaCl":"Sodium Chloride", "PS20": "Polysorbate 20", "PS80": "Polysorbate 80", "CHAPS":"3-((3-cholamidopropyl) dimethylammonio)-1-propanesulfonate(CHAPS)", "IGF-1": "Insulin Growth Factor - 1", "DTPA":"Diethylenetriamine Pentaacetate(DTPA)", "SDS": "Sodium Dodecyl Sulfate", "HFIP":"Hexafluoroisopropanol(HFIP)", "HPMC": "Hydroxymethylcellulose", "HPBCD": "2-Hydroxypropyl-beta-cyclodextrin", " PEG": " Polyethylene Glycol(PEG)","EDTA": "Ethylenediaminetetraacetic acid(EDTA)", "EGTA": "ethylene glycol-bis('-aminoethyl ether)-N,N,N',N'-tetraacetic acid(EGTA)", "Tris":"tris(hydroxymethyl)aminomethane(Tris)", "MES": "2-(N-morpholino)ethanesulfonic acid(MES)", "MOPS":"3-morpholinopropane-1-sulfonic acid(MOPS)", "HEPES": "2-[4-(2-hydroxyethyl)piperazin-1-yl]ethanesulfonic acid(HEPES)", "HCl": "Hydrochloric Acid", "H2O": "Dihydrogen Monoxide(H2O)"}
         reslist = results.split(",")
@@ -92,6 +95,7 @@ class Label(QDialog, Ui_LabelWindow):
         try:
             giffy = checkIfResult(self.connection, results)
             self.resuls.setText(giffy)
+            
         except:
             msgbox = QMessageBox.warning(self,"Warning Box", " Have you tried adding ingredients?" )
            
@@ -212,29 +216,30 @@ class Label(QDialog, Ui_LabelWindow):
    
         hhm_list = ['Azide', 'Sodium Cyanoborohydride', 'Sodium Perchlorate']
         createHHMList(self.connection) 
-      
-        if any(ele in batch for ele in corrosive_list):
+
+        if any(ele in batch for ele in corrosive_list) or any(ele in  self.results.split(", ") for ele in corrosive_list):
             self.isCorr = True
             self.corr.setPixmap(self.corrPix)
 
-        if any(ele in batch for ele in flam_list):
+        if any(ele in batch for ele in flam_list) or any(ele in  str(self.results).split(", ") for ele in flam_list):
             self.isFlam = True
             self.flam.setPixmap(self.flamPix)
-        if any(ele in batch for ele in tox_list):
+        if any(ele in batch for ele in tox_list) or any(ele in  str(self.results).split(", ") for ele in tox_list):
             self.isTox = True
             self.tox.setPixmap(self.toxPix)
-        if any(ele in batch for ele in resp_list):
+        if any(ele in batch for ele in resp_list) or any(ele in  str(self.results).split(", ") for ele in resp_list):
             self.isResp = True
             self.resp.setPixmap(self.respPix)
-        if any(ele in batch for ele in env_list):
+        if any(ele in batch for ele in env_list) or any(ele in  str(self.results).split(", ") for ele in env_list):
             self.isEnv = True
             self.env.setPixmap(self.envPix)
-        if any(ele in batch for ele in hhm_list):
+        if any(ele in batch for ele in hhm_list) or any(ele in  str(self.results).split(", ") for ele in hhm_list):
             self.isHHM = True
             self.hhmIcon.setPixmap(self.hhmPix)
-        if any(ele in batch for ele in haz_list):
+        if any(ele in batch for ele in haz_list )or any(ele in  str(self.results).split(", ") for ele in haz_list):
             self.isHaz = True
             self.haz.setPixmap(self.hazPix)
+        
         if self.isFlam is False  and self.isHHM is False  and self.isTox is False and self.isHaz is False and self.isResp is False and self.isCorr is False and self.isEnv is False:
             self.non.setPixmap(self.nonPix)
 

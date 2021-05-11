@@ -15,7 +15,6 @@ from PySide2.QtWidgets import *
 import Resourcing_rc
 import Resourcing_rc
 import Resourcing_rc
-import Resourcing_rc
 
 class Ui_LabelWindow(object):
     def setupUi(self, LabelWindow):
@@ -279,7 +278,7 @@ class Ui_LabelWindow(object):
         self.verticalLayout_2 = QVBoxLayout()
         self.verticalLayout_2.setSpacing(0)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
-        self.verticalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.verticalLayout_2.setSizeConstraint(QLayout.SetFixedSize)
         self.label = QLabel(self.frame)
         self.label.setObjectName(u"label")
         sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
@@ -352,15 +351,18 @@ class Ui_LabelWindow(object):
 
         self.verticalLayout_2.addWidget(self.label)
 
-        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer = QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Minimum)
 
         self.verticalLayout_2.addItem(self.verticalSpacer)
 
         self.batch_title = QLabel(self.frame)
         self.batch_title.setObjectName(u"batch_title")
-        sizePolicy.setHeightForWidth(self.batch_title.sizePolicy().hasHeightForWidth())
-        self.batch_title.setSizePolicy(sizePolicy)
-        self.batch_title.setMaximumSize(QSize(550, 25))
+        sizePolicy1 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.MinimumExpanding)
+        sizePolicy1.setHorizontalStretch(0)
+        sizePolicy1.setVerticalStretch(0)
+        sizePolicy1.setHeightForWidth(self.batch_title.sizePolicy().hasHeightForWidth())
+        self.batch_title.setSizePolicy(sizePolicy1)
+        self.batch_title.setMaximumSize(QSize(550, 50))
         self.batch_title.setBaseSize(QSize(550, 0))
         palette4 = QPalette()
         palette4.setBrush(QPalette.Active, QPalette.WindowText, brush)
@@ -426,19 +428,21 @@ class Ui_LabelWindow(object):
 "border: 5px black;\n"
 "border-width: 5px;\n"
 "}")
+        self.batch_title.setInputMethodHints(Qt.ImhMultiLine)
         self.batch_title.setFrameShape(QFrame.NoFrame)
         self.batch_title.setScaledContents(True)
+        self.batch_title.setWordWrap(True)
 
         self.verticalLayout_2.addWidget(self.batch_title)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Fixed)
+        self.verticalSpacer_2 = QSpacerItem(20, 20, QSizePolicy.Minimum, QSizePolicy.Minimum)
 
         self.verticalLayout_2.addItem(self.verticalSpacer_2)
 
         self.horizontalLayout_2 = QHBoxLayout()
         self.horizontalLayout_2.setSpacing(0)
         self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.horizontalLayout_2.setSizeConstraint(QLayout.SetDefaultConstraint)
+        self.horizontalLayout_2.setSizeConstraint(QLayout.SetFixedSize)
         self.horizontalLayout_2.setContentsMargins(-1, -1, -1, 0)
         self.gridLayout = QGridLayout()
         self.gridLayout.setObjectName(u"gridLayout")
@@ -446,6 +450,11 @@ class Ui_LabelWindow(object):
         self.gridLayout.setVerticalSpacing(6)
         self.deliveryLabel = QLabel(self.frame)
         self.deliveryLabel.setObjectName(u"deliveryLabel")
+        sizePolicy2 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Preferred)
+        sizePolicy2.setHorizontalStretch(0)
+        sizePolicy2.setVerticalStretch(0)
+        sizePolicy2.setHeightForWidth(self.deliveryLabel.sizePolicy().hasHeightForWidth())
+        self.deliveryLabel.setSizePolicy(sizePolicy2)
         self.deliveryLabel.setFont(font1)
         self.deliveryLabel.setScaledContents(True)
 
@@ -453,6 +462,8 @@ class Ui_LabelWindow(object):
 
         self.expLabel = QLabel(self.frame)
         self.expLabel.setObjectName(u"expLabel")
+        sizePolicy.setHeightForWidth(self.expLabel.sizePolicy().hasHeightForWidth())
+        self.expLabel.setSizePolicy(sizePolicy)
         self.expLabel.setFont(font1)
         self.expLabel.setInputMethodHints(Qt.ImhDate)
 
@@ -460,11 +471,18 @@ class Ui_LabelWindow(object):
 
         self.label_7 = QLabel(self.frame)
         self.label_7.setObjectName(u"label_7")
+        sizePolicy3 = QSizePolicy(QSizePolicy.Minimum, QSizePolicy.Preferred)
+        sizePolicy3.setHorizontalStretch(0)
+        sizePolicy3.setVerticalStretch(0)
+        sizePolicy3.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
+        self.label_7.setSizePolicy(sizePolicy3)
 
         self.gridLayout.addWidget(self.label_7, 2, 2, 1, 1)
 
         self.lotLabel = QLabel(self.frame)
         self.lotLabel.setObjectName(u"lotLabel")
+        sizePolicy2.setHeightForWidth(self.lotLabel.sizePolicy().hasHeightForWidth())
+        self.lotLabel.setSizePolicy(sizePolicy2)
         self.lotLabel.setFont(font1)
         self.lotLabel.setScaledContents(False)
 
@@ -472,16 +490,15 @@ class Ui_LabelWindow(object):
 
         self.label_3 = QLabel(self.frame)
         self.label_3.setObjectName(u"label_3")
+        sizePolicy3.setHeightForWidth(self.label_3.sizePolicy().hasHeightForWidth())
+        self.label_3.setSizePolicy(sizePolicy3)
 
         self.gridLayout.addWidget(self.label_3, 0, 2, 1, 1)
 
         self.dateLabel = QLabel(self.frame)
         self.dateLabel.setObjectName(u"dateLabel")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Preferred, QSizePolicy.Preferred)
-        sizePolicy1.setHorizontalStretch(0)
-        sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.dateLabel.sizePolicy().hasHeightForWidth())
-        self.dateLabel.setSizePolicy(sizePolicy1)
+        sizePolicy.setHeightForWidth(self.dateLabel.sizePolicy().hasHeightForWidth())
+        self.dateLabel.setSizePolicy(sizePolicy)
         self.dateLabel.setFont(font1)
         self.dateLabel.setScaledContents(True)
 
@@ -494,11 +511,11 @@ class Ui_LabelWindow(object):
 
         self.emailLabel = QLabel(self.frame)
         self.emailLabel.setObjectName(u"emailLabel")
-        sizePolicy2 = QSizePolicy(QSizePolicy.Maximum, QSizePolicy.Fixed)
-        sizePolicy2.setHorizontalStretch(0)
-        sizePolicy2.setVerticalStretch(0)
-        sizePolicy2.setHeightForWidth(self.emailLabel.sizePolicy().hasHeightForWidth())
-        self.emailLabel.setSizePolicy(sizePolicy2)
+        sizePolicy4 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Fixed)
+        sizePolicy4.setHorizontalStretch(0)
+        sizePolicy4.setVerticalStretch(0)
+        sizePolicy4.setHeightForWidth(self.emailLabel.sizePolicy().hasHeightForWidth())
+        self.emailLabel.setSizePolicy(sizePolicy4)
         font3 = QFont()
         font3.setPointSize(10)
         self.emailLabel.setFont(font3)
@@ -585,6 +602,11 @@ class Ui_LabelWindow(object):
 
         self.conLabel = QLabel(self.frame)
         self.conLabel.setObjectName(u"conLabel")
+        sizePolicy5 = QSizePolicy(QSizePolicy.MinimumExpanding, QSizePolicy.Preferred)
+        sizePolicy5.setHorizontalStretch(0)
+        sizePolicy5.setVerticalStretch(0)
+        sizePolicy5.setHeightForWidth(self.conLabel.sizePolicy().hasHeightForWidth())
+        self.conLabel.setSizePolicy(sizePolicy5)
         self.conLabel.setFont(font3)
         self.conLabel.setStyleSheet(u"QLabel{\n"
 "border-width: 5px}")
@@ -607,11 +629,8 @@ class Ui_LabelWindow(object):
 
         self.qrLabel = QLabel(self.frame)
         self.qrLabel.setObjectName(u"qrLabel")
-        sizePolicy3 = QSizePolicy(QSizePolicy.Expanding, QSizePolicy.Expanding)
-        sizePolicy3.setHorizontalStretch(0)
-        sizePolicy3.setVerticalStretch(0)
-        sizePolicy3.setHeightForWidth(self.qrLabel.sizePolicy().hasHeightForWidth())
-        self.qrLabel.setSizePolicy(sizePolicy3)
+        sizePolicy1.setHeightForWidth(self.qrLabel.sizePolicy().hasHeightForWidth())
+        self.qrLabel.setSizePolicy(sizePolicy1)
         self.qrLabel.setMinimumSize(QSize(0, 0))
         self.qrLabel.setMaximumSize(QSize(150, 150))
         self.qrLabel.setSizeIncrement(QSize(1, 1))
@@ -628,6 +647,7 @@ class Ui_LabelWindow(object):
 
         self.formLayout = QFormLayout()
         self.formLayout.setObjectName(u"formLayout")
+        self.formLayout.setSizeConstraint(QLayout.SetFixedSize)
         self.formLayout.setFieldGrowthPolicy(QFormLayout.FieldsStayAtSizeHint)
         self.formLayout.setHorizontalSpacing(19)
         self.formLayout.setVerticalSpacing(18)
@@ -636,6 +656,8 @@ class Ui_LabelWindow(object):
         self.corr.setObjectName(u"corr")
         sizePolicy.setHeightForWidth(self.corr.sizePolicy().hasHeightForWidth())
         self.corr.setSizePolicy(sizePolicy)
+        self.corr.setMinimumSize(QSize(85, 85))
+        self.corr.setMaximumSize(QSize(75, 75))
         self.corr.setPixmap(QPixmap(u":/newPrefix/corrosive.png"))
         self.corr.setScaledContents(True)
 
@@ -643,8 +665,13 @@ class Ui_LabelWindow(object):
 
         self.resp = QLabel(self.frame)
         self.resp.setObjectName(u"resp")
-        sizePolicy.setHeightForWidth(self.resp.sizePolicy().hasHeightForWidth())
-        self.resp.setSizePolicy(sizePolicy)
+        sizePolicy6 = QSizePolicy(QSizePolicy.Fixed, QSizePolicy.Fixed)
+        sizePolicy6.setHorizontalStretch(85)
+        sizePolicy6.setVerticalStretch(85)
+        sizePolicy6.setHeightForWidth(self.resp.sizePolicy().hasHeightForWidth())
+        self.resp.setSizePolicy(sizePolicy6)
+        self.resp.setMinimumSize(QSize(100, 100))
+        self.resp.setMaximumSize(QSize(75, 75))
         self.resp.setBaseSize(QSize(75, 75))
         self.resp.setAutoFillBackground(False)
         self.resp.setPixmap(QPixmap(u":/newPrefix/respiratory.png"))
@@ -656,6 +683,8 @@ class Ui_LabelWindow(object):
         self.tox.setObjectName(u"tox")
         sizePolicy.setHeightForWidth(self.tox.sizePolicy().hasHeightForWidth())
         self.tox.setSizePolicy(sizePolicy)
+        self.tox.setMinimumSize(QSize(85, 85))
+        self.tox.setMaximumSize(QSize(75, 75))
         self.tox.setPixmap(QPixmap(u":/newPrefix/toxic.png"))
         self.tox.setScaledContents(True)
 
@@ -665,6 +694,8 @@ class Ui_LabelWindow(object):
         self.haz.setObjectName(u"haz")
         sizePolicy.setHeightForWidth(self.haz.sizePolicy().hasHeightForWidth())
         self.haz.setSizePolicy(sizePolicy)
+        self.haz.setMinimumSize(QSize(85, 85))
+        self.haz.setMaximumSize(QSize(75, 75))
         self.haz.setAutoFillBackground(False)
         self.haz.setPixmap(QPixmap(u":/newPrefix/warning.png"))
         self.haz.setScaledContents(True)
@@ -675,6 +706,7 @@ class Ui_LabelWindow(object):
         self.env.setObjectName(u"env")
         sizePolicy.setHeightForWidth(self.env.sizePolicy().hasHeightForWidth())
         self.env.setSizePolicy(sizePolicy)
+        self.env.setMinimumSize(QSize(85, 85))
         self.env.setPixmap(QPixmap(u":/newPrefix/environment.png"))
         self.env.setScaledContents(True)
 
@@ -684,6 +716,8 @@ class Ui_LabelWindow(object):
         self.flam.setObjectName(u"flam")
         sizePolicy.setHeightForWidth(self.flam.sizePolicy().hasHeightForWidth())
         self.flam.setSizePolicy(sizePolicy)
+        self.flam.setMinimumSize(QSize(85, 85))
+        self.flam.setMaximumSize(QSize(75, 75))
         self.flam.setPixmap(QPixmap(u":/newPrefix/flammable.png"))
         self.flam.setScaledContents(True)
 
@@ -693,6 +727,8 @@ class Ui_LabelWindow(object):
         self.non.setObjectName(u"non")
         sizePolicy.setHeightForWidth(self.non.sizePolicy().hasHeightForWidth())
         self.non.setSizePolicy(sizePolicy)
+        self.non.setMinimumSize(QSize(75, 75))
+        self.non.setMaximumSize(QSize(75, 75))
         palette6 = QPalette()
         palette6.setBrush(QPalette.Active, QPalette.WindowText, brush)
         palette6.setBrush(QPalette.Active, QPalette.Button, brush1)
@@ -762,6 +798,8 @@ class Ui_LabelWindow(object):
         self.hhmIcon.setObjectName(u"hhmIcon")
         sizePolicy.setHeightForWidth(self.hhmIcon.sizePolicy().hasHeightForWidth())
         self.hhmIcon.setSizePolicy(sizePolicy)
+        self.hhmIcon.setMinimumSize(QSize(75, 75))
+        self.hhmIcon.setMaximumSize(QSize(75, 75))
         self.hhmIcon.setFont(font5)
         self.hhmIcon.setPixmap(QPixmap(u":/newPrefix/HHM.png"))
         self.hhmIcon.setScaledContents(True)

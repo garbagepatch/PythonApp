@@ -105,16 +105,22 @@ def checkIfResult(con, results):
     for (OldName, CorrectSpelling) in cur:
         tabdict[OldName] = CorrectSpelling
 
-    reslist= results.split(", ")
+    ''' reslist= results.split(", ")
     reslist = [tabdict.get(item, item) for item in reslist]
-    resstr = ", ".join(reslist)
-    
+    resstr = ", ".join(reslist)'''
+    resstr = find_replace_multi(results, tabdict)
+        
     return resstr
 def remove(list):
     pattern = '[0-9]'
     list = [re.sub(pattern, '', i) for i in list]
     return list
         
-        
+def find_replace_multi(string, dictionary):
+    for item in dictionary.keys():
+        # sub item for item's paired value in string
+        string = re.sub(item, dictionary[item], string)
+    return string
+       
 
 

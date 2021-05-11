@@ -1496,7 +1496,7 @@ border: 8px black;
        <number>0</number>
       </property>
       <property name="sizeConstraint">
-       <enum>QLayout::SetDefaultConstraint</enum>
+       <enum>QLayout::SetFixedSize</enum>
       </property>
       <item>
        <widget class="QLabel" name="label">
@@ -1995,7 +1995,7 @@ border: 8px black;
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
+         <enum>QSizePolicy::Minimum</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -2008,7 +2008,7 @@ border: 8px black;
       <item>
        <widget class="QLabel" name="batch_title">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
@@ -2016,7 +2016,7 @@ border: 8px black;
         <property name="maximumSize">
          <size>
           <width>550</width>
-          <height>25</height>
+          <height>50</height>
          </size>
         </property>
         <property name="baseSize">
@@ -2481,6 +2481,9 @@ border: 5px black;
 border-width: 5px;
 }</string>
         </property>
+        <property name="inputMethodHints">
+         <set>Qt::ImhMultiLine</set>
+        </property>
         <property name="frameShape">
          <enum>QFrame::NoFrame</enum>
         </property>
@@ -2488,6 +2491,9 @@ border-width: 5px;
          <string>ABM 472 - </string>
         </property>
         <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="wordWrap">
          <bool>true</bool>
         </property>
        </widget>
@@ -2498,7 +2504,7 @@ border-width: 5px;
          <enum>Qt::Vertical</enum>
         </property>
         <property name="sizeType">
-         <enum>QSizePolicy::Fixed</enum>
+         <enum>QSizePolicy::Minimum</enum>
         </property>
         <property name="sizeHint" stdset="0">
          <size>
@@ -2514,7 +2520,7 @@ border-width: 5px;
          <number>0</number>
         </property>
         <property name="sizeConstraint">
-         <enum>QLayout::SetDefaultConstraint</enum>
+         <enum>QLayout::SetFixedSize</enum>
         </property>
         <property name="bottomMargin">
          <number>0</number>
@@ -2529,6 +2535,12 @@ border-width: 5px;
           </property>
           <item row="5" column="0">
            <widget class="QLabel" name="deliveryLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -2544,6 +2556,12 @@ border-width: 5px;
           </item>
           <item row="4" column="2">
            <widget class="QLabel" name="expLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -2559,6 +2577,12 @@ border-width: 5px;
           </item>
           <item row="2" column="2">
            <widget class="QLabel" name="label_7">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -2566,6 +2590,12 @@ border-width: 5px;
           </item>
           <item row="6" column="0">
            <widget class="QLabel" name="lotLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>12</pointsize>
@@ -2581,6 +2611,12 @@ border-width: 5px;
           </item>
           <item row="0" column="2">
            <widget class="QLabel" name="label_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="text">
              <string/>
             </property>
@@ -2589,7 +2625,7 @@ border-width: 5px;
           <item row="4" column="0">
            <widget class="QLabel" name="dateLabel">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -2617,7 +2653,7 @@ border-width: 5px;
           <item row="5" column="2">
            <widget class="QLabel" name="emailLabel">
             <property name="sizePolicy">
-             <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
               <horstretch>0</horstretch>
               <verstretch>0</verstretch>
              </sizepolicy>
@@ -3120,6 +3156,12 @@ border-width: 5px;
           </item>
           <item row="1" column="0">
            <widget class="QLabel" name="conLabel">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="font">
              <font>
               <pointsize>10</pointsize>
@@ -3180,7 +3222,7 @@ border-width: 5px}</string>
         <item>
          <widget class="QLabel" name="qrLabel">
           <property name="sizePolicy">
-           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
@@ -3220,6 +3262,9 @@ border-width: 5px}</string>
     </item>
     <item>
      <layout class="QFormLayout" name="formLayout">
+      <property name="sizeConstraint">
+       <enum>QLayout::SetFixedSize</enum>
+      </property>
       <property name="fieldGrowthPolicy">
        <enum>QFormLayout::FieldsStayAtSizeHint</enum>
       </property>
@@ -3246,6 +3291,18 @@ border-width: 5px}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -3261,9 +3318,21 @@ border-width: 5px}</string>
        <widget class="QLabel" name="resp">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
+          <horstretch>85</horstretch>
+          <verstretch>85</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>100</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
         </property>
         <property name="baseSize">
          <size>
@@ -3293,6 +3362,18 @@ border-width: 5px}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -3311,6 +3392,18 @@ border-width: 5px}</string>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
         </property>
         <property name="autoFillBackground">
          <bool>false</bool>
@@ -3334,6 +3427,12 @@ border-width: 5px}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -3353,6 +3452,18 @@ border-width: 5px}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>85</width>
+          <height>85</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="text">
          <string/>
         </property>
@@ -3371,6 +3482,18 @@ border-width: 5px}</string>
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
         </property>
         <property name="palette">
          <palette>
@@ -3841,6 +3964,18 @@ border-width: 5px}</string>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
+        <property name="minimumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>75</width>
+          <height>75</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>9</pointsize>
@@ -3901,7 +4036,6 @@ QPushButton:default {
   </widget>
  </widget>
  <resources>
-  <include location="Resourcing.qrc"/>
   <include location="Resourcing.qrc"/>
   <include location="Resourcing.qrc"/>
   <include location="../../.designer/backup/Resourcing.qrc"/>

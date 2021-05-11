@@ -25,7 +25,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
         self.isMedia = False
         self.cond = 0
         self.batchTitle = "Batch"
-        self.deliveryZoneComboBox.addItems(["1-B-32", "2-G-12", "3-B-11", "3-J-11", "4th Floor Rt", "4th Floor Cold", "4th Floor H-Room", "5th Floor Rt", "5th Floor Cold", "5th Floor H-Room", "6th Floor RT", "6th Floor Cold", "6th Floor BST", "6th Floor H-Room", "SUL"])
+        self.deliveryZoneComboBox.addItems(["1-B-32", "2-G-12", "3-B-11", "3-J-11", "4th Floor Rt", "4th Floor Cold", "4th Floor H-Room", "5th Floor Rt", "5th Floor Cold", "5th Floor H-Room", "6th Floor RT", "6th Floor Cold", "6th Floor BST", "6th Floor H-Room", "6th Floor East Corrosives Cabinet", "SUL"])
         self.pHtemp = 27
         self.contemp = 25
         self.email = "email@email.com"
@@ -162,7 +162,7 @@ class HappyLabels(QMainWindow, Ui_MainWindow):
                 self.label = Label(self.listInfo, self.textEdit.toPlainText(), self.isMedia )
                 returnvalue = self.label.exec_()
                 if returnvalue == self.label.buttonBox.Cancel:
-                    self.reset()
+                    pass
                 else: 
                     self.reset()
              
